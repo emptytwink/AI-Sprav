@@ -1,0 +1,18 @@
+{
+  "backup_policy": {
+    "daily_retention_days": 14,
+    "monthly_retention_months": 12,
+    "verify_after_backup": true
+  },
+  "paths": [
+    "data/db",
+    "data/uploads",
+    "config",
+    "logs"
+  ],
+  "excluded": [
+    "tmp",
+    "cache",
+    "generated/thumbnails"
+  ]
+}

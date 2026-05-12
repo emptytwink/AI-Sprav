@@ -1,0 +1,143 @@
+/* static/css/view.css */
+:root {
+  --main-color: #007378;
+  --bg-level-1: #f0f7f7;
+  --bg-level-2: #e5f1f1;
+  --border-color: #a4d0d0;
+  --font: "Tahoma", sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font);
+  background: var(--bg-level-1);
+}
+
+.view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  background: var(--main-color);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.back-button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--main-color);
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+}
+
+.back-button:hover {
+  background: #e5f1f1;
+}
+
+.circle-info {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+}
+
+.upload-toggle {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-toggle:hover {
+  background: #f57c00;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 56px);
+}
+
+.upload-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  max-width: 320px;
+  z-index: 1100;
+}
+
+.upload-panel.hidden {
+  display: none;
+}
+
+.upload-panel h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+}
+
+#file-input {
+  width: 100%;
+  margin: 8px 0;
+}
+
+.upload-submit {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background: var(--main-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.upload-submit:hover {
+  background: #005a5e;
+}
+.files-section {
+  padding: 12px 16px 24px;
+  background: var(--bg-level-1);
+}
+
+.files-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.file-item a {
+  color: var(--main-color);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.file-item a:hover {
+  text-decoration: underline;
+}
+
+.files-empty {
+  font-size: 13px;
+  color: #555;
+}
+
+.circle-label {
+  font-weight: 600;
+}

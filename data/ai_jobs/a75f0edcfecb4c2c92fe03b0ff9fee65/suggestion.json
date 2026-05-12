@@ -1,0 +1,76 @@
+{
+  "title": "Robot Controller Technical Documentation",
+  "menu": [
+    {
+      "id": "operation",
+      "title": "Operation",
+      "type": "group",
+      "children": [
+        {
+          "id": "operation_procedure",
+          "title": "Operation Procedure",
+          "type": "item"
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "title": "Maintenance",
+      "type": "group",
+      "children": [
+        {
+          "id": "maintenance_schedule",
+          "title": "Maintenance Schedule",
+          "type": "item"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "Safety",
+      "type": "group",
+      "children": [
+        {
+          " ": "title",
+          "type": "item"
+        }
+      ]
+    }
+  ],
+  "contents": [
+    {
+      "item_id": "operation_procedure",
+      "title": "Operation Procedure",
+      "text_html": "<p>Инструкции по включению питания, проверке индикаторов и запуску автоматического режима.</p>",
+      "source_files": [
+        "manual.txt"
+      ]
+    },
+    {
+      "item_id": "maintenance_schedule",
+      "title": "Maintenance Schedule",
+      "text_html": "<p>Регулярные проверки кабелей, очистка фильтров и ежемесячная проверка аварийной остановки.</p>",
+      "source_files": [
+        "manual.txt"
+      ]
+    },
+    {
+      "item_id": "safety_precautions",
+      "title": "Safety Precautions",
+      "text_html": "<p>Отключение питания перед техническим обслуживанием.</p>",
+      "source_files": [
+        "manual.txt"
+      ]
+    }
+  ],
+  "_meta": {
+    "processed_documents": 1,
+    "extracted_files": [
+      "manual.txt"
+    ],
+    "skipped_files": [],
+    "archive_files": [
+      "manual.txt"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+flask
+werkzeug
+requests
+python-dotenv
+opencv-python
+numpy
+PyMuPDF
+python-docx
+beautifulsoup4
+openpyxl

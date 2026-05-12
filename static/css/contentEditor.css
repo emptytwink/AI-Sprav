@@ -1,0 +1,380 @@
+/* вкладки */
+.tabs { display:flex; gap:8px; margin:8px 0 10px; }
+.tab-btn { padding:8px 12px; border:1px solid var(--border-color); background:#fff; border-radius:6px; cursor:pointer; }
+.tab-btn.active { background: var(--hover-bg); }
+
+/* редактор */
+.rte-toolbar {
+  display:flex; flex-wrap:wrap; gap:6px; align-items:center;
+  padding:8px 10px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--border-color); border-radius:8px;
+}
+.rte-toolbar button, .rte-toolbar select {
+  min-height:32px; padding:0 8px;
+  border:1px solid var(--border-color); border-radius:6px;
+  background:#f9fdfd; cursor:pointer; font-weight:600;
+}
+.rte-toolbar .sep { width:1px; height:24px; background:var(--border-color); margin:0 4px; }
+
+.richbox {
+  min-height:280px; padding:12px 14px; background:#fff;
+  border:1px solid var(--border-color); border-radius:8px; overflow:auto;
+}
+.richbox:focus { outline:2px solid rgba(0,115,120,.15); }
+
+/* "Документация" должна быть flex ТОЛЬКО когда активна */
+#tab-docs { display:none; }
+#tab-docs.active { display:flex; flex-direction:column; min-height:0; }
+
+/* На всякий случай: прячем все неактивные тела вкладок */
+.tab-body { display:none; }
+.tab-body.active { display:block; }   /* для "Описание" block-достаточно */
+
+
+.docs-vertical {
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  height:auto;
+}
+
+.docs-vertical .docs-list {
+  width:100%;
+  flex:0 0 auto;
+  min-height:0;
+  margin-bottom:12px;
+  overflow:auto;
+  max-height:30vh;
+}
+
+/* предпросмотр внизу, растёт сколько нужно; скролл — у страницы */
+.docs-vertical .docs-preview {
+  width:100%;
+  margin-top:0; padding:8px;
+  background:#fff; border:1px solid var(--border-color); border-radius:8px;
+  flex:1 1 auto;
+  min-height: 80vh;     /* комфортная стартовая высота */
+  min-width:0;
+  overflow: visible;     /* не режем дочерние элементы */
+  display:flex; flex-direction:column;
+}
+
+.doc-preview {
+  flex:1 1 auto;
+  min-height: 80vh;      /* «минимум» для контейнера */
+  max-height:none;
+  overflow: visible;
+}
+.doc-preview.hidden { display:none; }
+
+/* Встраиваемые просмотрщики: пусть сами задают высоту контентом */
+.doc-preview iframe,
+.doc-preview embed,
+.doc-preview img {
+  display:block;
+  width:100%;
+  height:auto;
+  min-height: 85vh;      /* стартовый «крупный» размер */
+  border:0;
+  object-fit:contain;
+  background:#fff;
+}
+
+/* Список файлов — карточки */
+.files-list { list-style:none; margin:0; padding:0; }
+.files-list li { display:flex; align-items:center; gap:8px; }
+.files-list li .btn.danger { margin-left:auto; }
+
+.files-list .file-item {
+  display:flex; align-items:center; gap:8px;
+  padding:8px 10px; background:#fff;
+  border:1px solid var(--border-color); border-radius:6px;
+  transition: background .15s, border-color .15s;
+  cursor:pointer;
+}
+.files-list .file-item + .file-item { margin-top:6px; }
+.files-list .file-item:hover { background:var(--hover-bg); }
+.files-list .file-item.active {
+  background:var(--hover-bg);
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 2px rgba(0,115,120,.12) inset;
+}
+
+/* вкладки */
+.tab-body { display:none; }
+.tab-body.active { display:block; }
+
+/* Excel preview */
+.xlsx-tabs { display:flex; gap:6px; margin:8px 0; }
+.xlsx-tab { padding:6px 10px; background:#fff; border:1px solid var(--border-color); border-radius:6px; cursor:pointer; font-weight:600; }
+.xlsx-tab.active { background:var(--hover-bg); }
+.xlsx-wrap { border:1px solid var(--border-color); border-radius:8px; background:#fff; max-height:none; overflow:auto; }
+.xlsx-content { padding:8px; }
+.xlsx-table { border-collapse:collapse; min-width:640px; }
+.xlsx-table th, .xlsx-table td { border:1px solid #d9e4e4; padding:6px 8px; white-space:nowrap; }
+.xlsx-table th { position:sticky; top:0; background:#f8fbfb; font-weight:700; z-index:1; }
+
+/* плавающая кнопка */
+.fab-save {
+  position:fixed; right:24px; bottom:24px;
+  width:52px; height:52px;
+  border-radius:50%; border:none;
+  background:var(--main-color); color:#fff;
+  font-size:22px; box-shadow:0 6px 16px rgba(0,0,0,.15);
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  z-index:1000;
+}
+.fab-save:hover { filter:brightness(1.05); transform:translateY(-1px); }
+.fab-save:active { transform:translateY(0); }
+@media (max-width:600px) { .fab-save { right:16px; bottom:16px; } }
+
+.editable-title { outline:2px dashed rgba(255,255,255,.6); padding:2px 4px; border-radius:4px; }
+#tab-docs.dragging { outline:2px dashed #26a69a; outline-offset:6px; }
+
+#desc-view { margin-bottom:16px; }
+#desc-edit .richbox { margin-bottom:16px; }
+
+/* Видео в описании */
+.prose video {
+  max-width:100%;
+  height:auto;
+  display:block;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  margin:12px 0 16px;
+}
+
+/* Внешние встраивания (YouTube/Vimeo) */
+.video-embed {
+  position:relative; width:100%; aspect-ratio:16/9;
+  background:#000; border-radius:12px; overflow:hidden; margin:12px 0 16px;
+}
+.video-embed iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+/* Подпись под видео */
+.prose figure.video { margin:12px 0 16px; }
+.prose figure.video > figcaption { font-size:.9rem; opacity:.75; margin-top:6px; }
+/* Всегда белый фон под текстом, даже если его много */
+#tab-desc {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-sizing: border-box;
+}
+
+/* убираем дублирование рамки у .richbox */
+#tab-desc .richbox {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  min-height: auto;
+}
+.tabs { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.tab-btn { padding:6px 10px; border:1px solid #ddd; border-radius:8px; cursor:pointer; background:#fff; }
+.tab-btn.active { border-color:#007378; }
+.tab-btn .tab-title { pointer-events:none; }
+.tab-btn .tab-actions { margin-left:6px; opacity:0.7 }
+.tab-btn[draggable="true"] { cursor:grab; }
+.tabs-actions { margin-left:auto; }
+#tab-editor { min-height:560px; outline:none; }
+/* Кнопка "+" (добавить вкладку) */
+.tab-btn.edit-mode-only#btn-add-tab {
+  border-style: dashed;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 36px;
+  padding: 8px 10px;
+}
+.tab-btn#btn-add-tab:hover {
+  background: #eef7f7;
+  border-color: var(--main-color);
+  transform: translateY(-1px);
+}
+.tab-btn#btn-add-tab:active {
+  transform: translateY(0);
+}
+
+/* Базовые кнопки */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .15s ease;
+}
+.btn:hover { background: var(--hover-bg); }
+.btn:active { transform: translateY(0.5px); }
+.btn:focus-visible { outline: 2px solid var(--main-color); outline-offset: 2px; }
+
+/* Варианты */
+.btn-primary {
+  background: var(--main-color);
+  border-color: var(--main-color);
+  color: #fff;
+}
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-outline {
+  background: #fff;
+  border-color: var(--main-color);
+  color: var(--main-color);
+}
+
+/* Конкретные кнопки */
+.btn-folder, #pick-doc-folder {
+  /* кнопка прикрепления папки синхронизации */
+  /* можно оставить и id, и класс для универсальности */
+  composes: btn btn-outline;
+}
+.btn-video, #btn-insert-video {
+  /* кнопка добавления/вставки видео */
+  composes: btn btn-primary;
+}
+
+/* Если сборщик CSS не поддерживает composes — просто продублируем: */
+#pick-doc-folder {
+  display:inline-flex; align-items:center; gap:8px;
+  height:34px; padding:0 12px; border-radius:8px;
+  border:1px solid var(--main-color); color:var(--main-color); background:#fff;
+  font-weight:600; cursor:pointer; transition:.15s ease;
+}
+#pick-doc-folder:hover { background: var(--hover-bg); }
+
+#btn-insert-video {
+  display:inline-flex; align-items:center; gap:8px;
+  height:34px; padding:0 12px; border-radius:8px;
+  border:1px solid var(--main-color); color:#fff; background: var(--main-color);
+  font-weight:600; cursor:pointer; transition:.15s ease;
+}
+#btn-insert-video:hover { filter: brightness(1.05); }
+.rte-video-box { position: relative; display:inline-block; width:100%; max-width:100%; margin:8px 0; }
+.rte-video-box.selected { outline: 2px solid var(--main-color); outline-offset: 2px; }
+.rte-video-resize {
+  position: absolute; right: 6px; bottom: 6px; width: 14px; height: 14px;
+  border: 1px solid var(--border-color); background: #fff; border-radius: 3px;
+  cursor: nwse-resize; box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+.video-toolbar { position: absolute; background:#fff; border:1px solid var(--border-color); border-radius:8px; padding:6px; gap:6px; }
+.video-toolbar .btn { height:28px; padding:0 10px; border-radius:6px; border:1px solid var(--border-color); background:#fff; font-weight:600; cursor:pointer; }
+.video-toolbar .btn:hover { background: var(--hover-bg); }
+.video-toolbar .btn.danger { border-color:#d33; color:#d33; }
+/* === Изображения в редакторе: контейнер и ручка ресайза === */
+.rte-img-box { position:relative; display:inline-block; max-width:100%; margin:8px 0; }
+.rte-img-box img { display:block; width:100%; height:auto; }
+.rte-img-box.selected { outline:2px solid var(--main-color); outline-offset:2px; }
+.rte-img-resize {
+  position:absolute; right:6px; bottom:6px; width:14px; height:14px;
+  border:1px solid var(--border-color); background:#fff; border-radius:3px;
+  cursor:nwse-resize; box-shadow:0 1px 2px rgba(0,0,0,.15);
+}
+/* === Toast: правый верхний угол, крупный прямоугольный === */
+.toast-container {
+  position: fixed;
+  top: 20px;               /* сверху */
+  right: 20px;             /* справа */
+  bottom: auto;            /* отключаем нижнюю привязку */
+  left: auto;
+  display: flex;
+  flex-direction: column;  /* новые тосты вниз по колонке */
+  gap: 10px;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  /* размеры — больше и «прямоугольнее» */
+  padding: 14px 18px;
+  border-radius: 6px;                 /* чуть скруглённый прямоугольник */
+  font: 600 16px/1.25 var(--font, Inter, Arial, sans-serif);
+  min-width: 260px;                   /* шире стандартного */
+  max-width: 480px;                   /* не расползается слишком */
+  background: #222;
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  opacity: 0;
+  transform: translateY(-6px);        /* анимация «изверху» */
+  animation: toast-in-top .18s ease forwards;
+}
+
+/* Цветовые варианты (если используешь window.toast(msg, 'err')) */
+.toast.ok  { background: var(--main-color, #0f766e); }
+.toast.err { background: #b91c1c; }
+
+/* Уход тоста */
+.toast.hide { animation: toast-out-top .26s ease forwards; }
+
+/* Анимации для верхнего расположения */
+@keyframes toast-in-top { to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-out-top { to { opacity: 0; transform: translateY(-6px); } }
+/* Хлебные крошки под заголовком */
+.breadcrumbs {
+  font-size: 13px;
+  color: #334;
+  opacity: 0.9;
+  margin: 4px 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breadcrumbs span {
+  display: inline-block;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.breadcrumbs span + span::before {
+  content: "›";
+  margin: 0 6px;
+  color: #99a;
+}
+/* Адаптивная ширина бокового меню и более свободный контент */
+
+/* Левая панель: ширина зависит от экрана, но не меньше 260 и не больше 380 */
+.sidebar {
+  flex: 0 0 clamp(260px, 22vw, 380px);
+  min-width: 260px;
+  max-width: 380px;
+}
+
+/* Правая колонка: пусть занимает всё остальное и не сжимается до нуля */
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+/* Отступ для строки вкладок от левой границы контента */
+.tabs-bar {
+  margin-top: 8px;
+  padding-left: 8px;   /* можно увеличить до 12–16, если захочешь ещё воздуха */
+}
+/* === Убираем "лес" из вертикальных линий слева === */
+
+/* Отключаем старые направляющие для всех вложенных пунктов */
+.submenu .menu-item::before {
+  content: none;
+}
+
+/* Оставляем ОДНУ вертикальную ось только для 1-го уровня внутри группы */
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;          /* можно подвинуть ближе/дальше к тексту */
+  width: 2px;
+  height: 100%;
+  background-color: var(--main-color);
+  opacity: 0.35;        /* делаем линию более мягкой */
+}
+/* 1. Убираем "ёлку" из псевдоэлементов на всех вложенных пунктах */
+.submenu .menu-item::before {
+  content: none !important;
+}

@@ -1,0 +1,10 @@
+{
+  "job_id": "71559d910a0c4679a63921ee6885bfea",
+  "status": "failed",
+  "message": "Модель Ollama не найдена: qwen3:8b",
+  "progress": 100,
+  "error": "Модель Ollama не найдена: qwen3:8b",
+  "archive_name": "manual.zip",
+  "created_at": "2026-05-12T10:13:12",
+  "finished_at": "2026-05-12T10:13:12"
+}

@@ -1,0 +1,1904 @@
+{
+  "title": "Предложенный справочник",
+  "menu": [
+    {
+      "id": "00_pasport_komplekta",
+      "title": "Паспорт комплекта",
+      "type": "group",
+      "children": [
+        {
+          "id": "00_pasport_komplekta_00_00_navigaciya_po_arhivu",
+          "title": "Навигация по архиву",
+          "type": "group",
+          "children": [
+            {
+              "id": "00_pasport_komplekta_00_00_navigaciya_po_arhivu_navigaciya_po_arhivu_i_ozhidaemaya_struktura",
+              "title": "Навигация по архиву и ожидаемая структура",
+              "type": "item"
+            },
+            {
+              "id": "00_pasport_komplekta_00_00_navigaciya_po_arhivu_opisanie_testovogo_nabora_dlya_ii",
+              "title": "Описание тестового набора для ИИ",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "00_pasport_komplekta_00_01_sostav_postavki",
+          "title": "Состав поставки",
+          "type": "group",
+          "children": [
+            {
+              "id": "00_pasport_komplekta_00_01_sostav_postavki_pasport_komplekta_dokumentacii_ksd_01",
+              "title": "Паспорт комплекта документации КСД 01",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "01_koncepciya_i_granicy",
+      "title": "Концепция и границы",
+      "type": "group",
+      "children": [
+        {
+          "id": "01_koncepciya_i_granicy_01_01_naznachenie",
+          "title": "Назначение",
+          "type": "group",
+          "children": [
+            {
+              "id": "01_koncepciya_i_granicy_01_01_naznachenie_koncepciya_sistemy_i_granicy_primeneniya",
+              "title": "Концепция системы и границы применения",
+              "type": "item"
+            },
+            {
+              "id": "01_koncepciya_i_granicy_01_01_naznachenie_opisanie_kompleksa_ksd_01",
+              "title": "Описание комплекса КСД 01",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "01_koncepciya_i_granicy_01_02_terminy_i_roli",
+          "title": "Термины и роли",
+          "type": "group",
+          "children": [
+            {
+              "id": "01_koncepciya_i_granicy_01_02_terminy_i_roli_glossariy_terminov_i_sokrascheniy",
+              "title": "Глоссарий терминов и сокращений",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02_arhitektura",
+      "title": "Архитектура",
+      "type": "group",
+      "children": [
+        {
+          "id": "02_arhitektura_02_01_logicheskaya_model",
+          "title": "Логическая модель",
+          "type": "group",
+          "children": [
+            {
+              "id": "02_arhitektura_02_01_logicheskaya_model_arhitekturnoe_opisanie_kompleksa",
+              "title": "Архитектурное описание комплекса",
+              "type": "item"
+            },
+            {
+              "id": "02_arhitektura_02_01_logicheskaya_model_opisanie_moduley_i_podsistem",
+              "title": "Описание модулей и подсистем",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "02_arhitektura_02_02_infrastruktura",
+          "title": "Инфраструктура",
+          "type": "group",
+          "children": [
+            {
+              "id": "02_arhitektura_02_02_infrastruktura_infrastrukturnaya_shema_uzlov",
+              "title": "Инфраструктурная схема узлов",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "02_arhitektura_02_03_integracii",
+          "title": "Интеграции",
+          "type": "group",
+          "children": [
+            {
+              "id": "02_arhitektura_02_03_integracii_shema_informacionnyh_potokov",
+              "title": "Схема информационных потоков",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "03_trebovaniya",
+      "title": "Требования",
+      "type": "group",
+      "children": [
+        {
+          "id": "03_trebovaniya_03_01_funkcionalnye",
+          "title": "Функциональные",
+          "type": "group",
+          "children": [
+            {
+              "id": "03_trebovaniya_03_01_funkcionalnye_tehnicheskoe_zadanie_na_kompleks",
+              "title": "Техническое задание на комплекс",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "03_trebovaniya_03_02_nefunkcionalnye",
+          "title": "Нефункциональные",
+          "type": "group",
+          "children": [
+            {
+              "id": "03_trebovaniya_03_02_nefunkcionalnye_trebovaniya_k_proizvoditelnosti_i_nadezhnosti",
+              "title": "Требования к производительности и надёжности",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "03_trebovaniya_03_03_informacionnaya_bezopasnost",
+          "title": "Информационная безопасность",
+          "type": "group",
+          "children": [
+            {
+              "id": "03_trebovaniya_03_03_informacionnaya_bezopasnost_trebovaniya_informacionnoy_bezopasnosti",
+              "title": "Требования информационной безопасности",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "04_razvertyvanie_i_montazh",
+      "title": "Развертывание и монтаж",
+      "type": "group",
+      "children": [
+        {
+          "id": "04_razvertyvanie_i_montazh_04_01_podgotovka_sredy",
+          "title": "Подготовка среды",
+          "type": "group",
+          "children": [
+            {
+              "id": "04_razvertyvanie_i_montazh_04_01_podgotovka_sredy_trebovaniya_k_srede_razvertyvaniya",
+              "title": "Требования к среде развертывания",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "04_razvertyvanie_i_montazh_04_02_montazh_oborudovaniya",
+          "title": "Монтаж оборудования",
+          "type": "group",
+          "children": [
+            {
+              "id": "04_razvertyvanie_i_montazh_04_02_montazh_oborudovaniya_rukovodstvo_po_montazhu_oborudovaniya",
+              "title": "Руководство по монтажу оборудования",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "04_razvertyvanie_i_montazh_04_03_podklyuchenie_i_proverka",
+          "title": "Подключение и проверка",
+          "type": "group",
+          "children": [
+            {
+              "id": "04_razvertyvanie_i_montazh_04_03_podklyuchenie_i_proverka_poryadok_podklyucheniya_i_proverki_liniy",
+              "title": "Порядок подключения и проверки линий",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05_puskonaladka_i_priemka",
+      "title": "Пусконаладка и приемка",
+      "type": "group",
+      "children": [
+        {
+          "id": "05_puskonaladka_i_priemka_05_01_pervichnyy_pusk",
+          "title": "Первичный пуск",
+          "type": "group",
+          "children": [
+            {
+              "id": "05_puskonaladka_i_priemka_05_01_pervichnyy_pusk_poryadok_pervichnogo_puska",
+              "title": "Порядок первичного пуска",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "05_puskonaladka_i_priemka_05_02_ispytaniya",
+          "title": "Испытания",
+          "type": "group",
+          "children": [
+            {
+              "id": "05_puskonaladka_i_priemka_05_02_ispytaniya_programma_i_metodika_ispytaniy",
+              "title": "Программа и методика испытаний",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "05_puskonaladka_i_priemka_05_03_akty",
+          "title": "Акты",
+          "type": "group",
+          "children": [
+            {
+              "id": "05_puskonaladka_i_priemka_05_03_akty_shablon_akta_gotovnosti_k_ekspluatacii",
+              "title": "Шаблон акта готовности к эксплуатации",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "06_ekspluataciya",
+      "title": "Эксплуатация",
+      "type": "group",
+      "children": [
+        {
+          "id": "06_ekspluataciya_06_01_operator",
+          "title": "Оператор",
+          "type": "group",
+          "children": [
+            {
+              "id": "06_ekspluataciya_06_01_operator_rukovodstvo_operatora",
+              "title": "Руководство оператора",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "06_ekspluataciya_06_02_administrator",
+          "title": "Администратор",
+          "type": "group",
+          "children": [
+            {
+              "id": "06_ekspluataciya_06_02_administrator_reglament_ezhednevnogo_kontrolya",
+              "title": "Регламент ежедневного контроля",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "07_tehnicheskoe_obsluzhivanie",
+      "title": "Техническое обслуживание",
+      "type": "group",
+      "children": [
+        {
+          "id": "07_tehnicheskoe_obsluzhivanie_07_01_reglamentnye_raboty",
+          "title": "Регламентные работы",
+          "type": "group",
+          "children": [
+            {
+              "id": "07_tehnicheskoe_obsluzhivanie_07_01_reglamentnye_raboty_reglament_tehnicheskogo_obsluzhivaniya",
+              "title": "Регламент технического обслуживания",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "07_tehnicheskoe_obsluzhivanie_07_02_zamena_komponentov",
+          "title": "Замена компонентов",
+          "type": "group",
+          "children": [
+            {
+              "id": "07_tehnicheskoe_obsluzhivanie_07_02_zamena_komponentov_instrukciya_po_zamene_moduley",
+              "title": "Инструкция по замене модулей",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "08_diagnostika_i_avarii",
+      "title": "Диагностика и аварии",
+      "type": "group",
+      "children": [
+        {
+          "id": "08_diagnostika_i_avarii_08_01_kody_oshibok",
+          "title": "Коды ошибок",
+          "type": "group",
+          "children": [
+            {
+              "id": "08_diagnostika_i_avarii_08_01_kody_oshibok_spravochnik_kodov_oshibok",
+              "title": "Справочник кодов ошибок",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "08_diagnostika_i_avarii_08_02_algoritmy_ustraneniya",
+          "title": "Алгоритмы устранения",
+          "type": "group",
+          "children": [
+            {
+              "id": "08_diagnostika_i_avarii_08_02_algoritmy_ustraneniya_karta_diagnostiki_neispravnostey",
+              "title": "Карта диагностики неисправностей",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "09_bezopasnost",
+      "title": "Безопасность",
+      "type": "group",
+      "children": [
+        {
+          "id": "09_bezopasnost_09_01_ohrana_truda",
+          "title": "Охрана труда",
+          "type": "group",
+          "children": [
+            {
+              "id": "09_bezopasnost_09_01_ohrana_truda_trebovaniya_bezopasnosti_pri_rabote",
+              "title": "Требования безопасности при работе",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "09_bezopasnost_09_02_dostup_i_audit",
+          "title": "Доступ и аудит",
+          "type": "group",
+          "children": [
+            {
+              "id": "09_bezopasnost_09_02_dostup_i_audit_poryadok_audita_deystviy_polzovateley",
+              "title": "Порядок аудита действий пользователей",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10_obnovlenie_po",
+      "title": "Обновление ПО",
+      "type": "group",
+      "children": [
+        {
+          "id": "10_obnovlenie_po_10_01_podgotovka_reliza",
+          "title": "Подготовка релиза",
+          "type": "group",
+          "children": [
+            {
+              "id": "10_obnovlenie_po_10_01_podgotovka_reliza_poryadok_obnovleniya_programmnogo_obespecheniya",
+              "title": "Порядок обновления программного обеспечения",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "10_obnovlenie_po_10_02_otkat",
+          "title": "Откат",
+          "type": "group",
+          "children": [
+            {
+              "id": "10_obnovlenie_po_10_02_otkat_instrukciya_po_otkatu_versii",
+              "title": "Инструкция по откату версии",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11_rezervnoe_kopirovanie",
+      "title": "Резервное копирование",
+      "type": "group",
+      "children": [
+        {
+          "id": "11_rezervnoe_kopirovanie_11_01_politika_backup",
+          "title": "Политика Backup",
+          "type": "group",
+          "children": [
+            {
+              "id": "11_rezervnoe_kopirovanie_11_01_politika_backup_politika_rezervnogo_kopirovaniya",
+              "title": "Политика резервного копирования",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "11_rezervnoe_kopirovanie_11_02_vosstanovlenie",
+          "title": "Восстановление",
+          "type": "group",
+          "children": [
+            {
+              "id": "11_rezervnoe_kopirovanie_11_02_vosstanovlenie_instrukciya_po_vosstanovleniyu_posle_sboya",
+              "title": "Инструкция по восстановлению после сбоя",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12_integracii_api",
+      "title": "Интеграции API",
+      "type": "group",
+      "children": [
+        {
+          "id": "12_integracii_api_12_01_rest_api",
+          "title": "REST API",
+          "type": "group",
+          "children": [
+            {
+              "id": "12_integracii_api_12_01_rest_api_rukovodstvo_po_api",
+              "title": "Руководство по API",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "12_integracii_api_12_02_obmen_dannymi",
+          "title": "Обмен данными",
+          "type": "group",
+          "children": [
+            {
+              "id": "12_integracii_api_12_02_obmen_dannymi_reglament_obmena_dannymi_s_1s",
+              "title": "Регламент обмена данными с 1С",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13_chertezhi_i_shemy",
+      "title": "Чертежи и схемы",
+      "type": "group",
+      "children": [
+        {
+          "id": "13_chertezhi_i_shemy_13_01_elektricheskie_shemy",
+          "title": "Электрические схемы",
+          "type": "group",
+          "children": [
+            {
+              "id": "13_chertezhi_i_shemy_13_01_elektricheskie_shemy_opisanie_elektricheskoy_shemy",
+              "title": "Описание электрической схемы",
+              "type": "item"
+            }
+          ]
+        },
+        {
+          "id": "13_chertezhi_i_shemy_13_02_montazhnye_shemy",
+          "title": "Монтажные схемы",
+          "type": "group",
+          "children": [
+            {
+              "id": "13_chertezhi_i_shemy_13_02_montazhnye_shemy_opisanie_montazhnoy_shemy",
+              "title": "Описание монтажной схемы",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "14_komplektnost_i_zip",
+      "title": "Комплектность и ЗИП",
+      "type": "group",
+      "children": [
+        {
+          "id": "14_komplektnost_i_zip_14_01_komplektnost",
+          "title": "Комплектность",
+          "type": "group",
+          "children": [
+            {
+              "id": "14_komplektnost_i_zip_14_01_komplektnost_pasport_izdeliya_ksd_01",
+              "title": "Паспорт изделия КСД 01",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "15_formy_aktov_zhurnalov",
+      "title": "Формы актов журналов",
+      "type": "group",
+      "children": [
+        {
+          "id": "15_formy_aktov_zhurnalov_15_01_akty",
+          "title": "Акты",
+          "type": "group",
+          "children": [
+            {
+              "id": "15_formy_aktov_zhurnalov_15_01_akty_forma_akta_peredachi_v_ekspluataciyu",
+              "title": "Форма акта передачи в эксплуатацию",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "16_smeshannye_fayly_dlya_klassifikacii",
+      "title": "Смешанные файлы для классификации",
+      "type": "group",
+      "children": [
+        {
+          "id": "16_smeshannye_fayly_dlya_klassifikacii_16_01_bez_ochevidnyh_nazvaniy",
+          "title": "Без очевидных названий",
+          "type": "group",
+          "children": [
+            {
+              "id": "16_smeshannye_fayly_dlya_klassifikacii_16_01_bez_ochevidnyh_nazvaniy_dokument_a_17",
+              "title": "Документ А 17",
+              "type": "item"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contents": [
+    {
+      "item_id": "00_pasport_komplekta_00_00_navigaciya_po_arhivu_navigaciya_po_arhivu_i_ozhidaemaya_struktura",
+      "title": "Навигация по архиву и ожидаемая структура",
+      "text_html": "<p>Раздел сформирован по документу <b>00_Паспорт_комплекта/00_00_Навигация_по_архиву/Навигация_по_архиву_и_ожидаемая_структура.docx</b>.</p>",
+      "source_files": [
+        "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Навигация_по_архиву_и_ожидаемая_структура.docx"
+      ]
+    },
+    {
+      "item_id": "00_pasport_komplekta_00_00_navigaciya_po_arhivu_opisanie_testovogo_nabora_dlya_ii",
+      "title": "Описание тестового набора для ИИ",
+      "text_html": "<p>Раздел сформирован по документу <b>00_Паспорт_комплекта/00_00_Навигация_по_архиву/Описание_тестового_набора_для_ИИ.pdf</b>.</p>",
+      "source_files": [
+        "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Описание_тестового_набора_для_ИИ.pdf"
+      ]
+    },
+    {
+      "item_id": "00_pasport_komplekta_00_01_sostav_postavki_pasport_komplekta_dokumentacii_ksd_01",
+      "title": "Паспорт комплекта документации КСД 01",
+      "text_html": "<p>Раздел сформирован по документу <b>00_Паспорт_комплекта/00_01_Состав_поставки/Паспорт_комплекта_документации_КСД-01.pdf</b>.</p>",
+      "source_files": [
+        "00_Паспорт_комплекта/00_01_Состав_поставки/Паспорт_комплекта_документации_КСД-01.pdf"
+      ]
+    },
+    {
+      "item_id": "01_koncepciya_i_granicy_01_01_naznachenie_koncepciya_sistemy_i_granicy_primeneniya",
+      "title": "Концепция системы и границы применения",
+      "text_html": "<p>Раздел сформирован по документу <b>01_Концепция_и_границы/01_01_Назначение/Концепция_системы_и_границы_применения.docx</b>.</p>",
+      "source_files": [
+        "01_Концепция_и_границы/01_01_Назначение/Концепция_системы_и_границы_применения.docx"
+      ]
+    },
+    {
+      "item_id": "01_koncepciya_i_granicy_01_01_naznachenie_opisanie_kompleksa_ksd_01",
+      "title": "Описание комплекса КСД 01",
+      "text_html": "<p>Раздел сформирован по документу <b>01_Концепция_и_границы/01_01_Назначение/Описание_комплекса_КСД-01.pdf</b>.</p>",
+      "source_files": [
+        "01_Концепция_и_границы/01_01_Назначение/Описание_комплекса_КСД-01.pdf"
+      ]
+    },
+    {
+      "item_id": "01_koncepciya_i_granicy_01_02_terminy_i_roli_glossariy_terminov_i_sokrascheniy",
+      "title": "Глоссарий терминов и сокращений",
+      "text_html": "<p>Раздел сформирован по документу <b>01_Концепция_и_границы/01_02_Термины_и_роли/Глоссарий_терминов_и_сокращений.docx</b>.</p>",
+      "source_files": [
+        "01_Концепция_и_границы/01_02_Термины_и_роли/Глоссарий_терминов_и_сокращений.docx"
+      ]
+    },
+    {
+      "item_id": "02_arhitektura_02_01_logicheskaya_model_arhitekturnoe_opisanie_kompleksa",
+      "title": "Архитектурное описание комплекса",
+      "text_html": "<p>Раздел сформирован по документу <b>02_Архитектура/02_01_Логическая_модель/Архитектурное_описание_комплекса.pdf</b>.</p>",
+      "source_files": [
+        "02_Архитектура/02_01_Логическая_модель/Архитектурное_описание_комплекса.pdf"
+      ]
+    },
+    {
+      "item_id": "02_arhitektura_02_01_logicheskaya_model_opisanie_moduley_i_podsistem",
+      "title": "Описание модулей и подсистем",
+      "text_html": "<p>Раздел сформирован по документу <b>02_Архитектура/02_01_Логическая_модель/Описание_модулей_и_подсистем.docx</b>.</p>",
+      "source_files": [
+        "02_Архитектура/02_01_Логическая_модель/Описание_модулей_и_подсистем.docx"
+      ]
+    },
+    {
+      "item_id": "02_arhitektura_02_02_infrastruktura_infrastrukturnaya_shema_uzlov",
+      "title": "Инфраструктурная схема узлов",
+      "text_html": "<p>Раздел сформирован по документу <b>02_Архитектура/02_02_Инфраструктура/Инфраструктурная_схема_узлов.pdf</b>.</p>",
+      "source_files": [
+        "02_Архитектура/02_02_Инфраструктура/Инфраструктурная_схема_узлов.pdf"
+      ]
+    },
+    {
+      "item_id": "02_arhitektura_02_03_integracii_shema_informacionnyh_potokov",
+      "title": "Схема информационных потоков",
+      "text_html": "<p>Раздел сформирован по документу <b>02_Архитектура/02_03_Интеграции/Схема_информационных_потоков.docx</b>.</p>",
+      "source_files": [
+        "02_Архитектура/02_03_Интеграции/Схема_информационных_потоков.docx"
+      ]
+    },
+    {
+      "item_id": "03_trebovaniya_03_01_funkcionalnye_tehnicheskoe_zadanie_na_kompleks",
+      "title": "Техническое задание на комплекс",
+      "text_html": "<p>Раздел сформирован по документу <b>03_Требования/03_01_Функциональные/Техническое_задание_на_комплекс.pdf</b>.</p>",
+      "source_files": [
+        "03_Требования/03_01_Функциональные/Техническое_задание_на_комплекс.pdf"
+      ]
+    },
+    {
+      "item_id": "03_trebovaniya_03_02_nefunkcionalnye_trebovaniya_k_proizvoditelnosti_i_nadezhnosti",
+      "title": "Требования к производительности и надёжности",
+      "text_html": "<p>Раздел сформирован по документу <b>03_Требования/03_02_Нефункциональные/Требования_к_производительности_и_надёжности.docx</b>.</p>",
+      "source_files": [
+        "03_Требования/03_02_Нефункциональные/Требования_к_производительности_и_надёжности.docx"
+      ]
+    },
+    {
+      "item_id": "03_trebovaniya_03_03_informacionnaya_bezopasnost_trebovaniya_informacionnoy_bezopasnosti",
+      "title": "Требования информационной безопасности",
+      "text_html": "<p>Раздел сформирован по документу <b>03_Требования/03_03_Информационная_безопасность/Требования_информационной_безопасности.pdf</b>.</p>",
+      "source_files": [
+        "03_Требования/03_03_Информационная_безопасность/Требования_информационной_безопасности.pdf"
+      ]
+    },
+    {
+      "item_id": "04_razvertyvanie_i_montazh_04_01_podgotovka_sredy_trebovaniya_k_srede_razvertyvaniya",
+      "title": "Требования к среде развертывания",
+      "text_html": "<p>Раздел сформирован по документу <b>04_Развертывание_и_монтаж/04_01_Подготовка_среды/Требования_к_среде_развертывания.docx</b>.</p>",
+      "source_files": [
+        "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Требования_к_среде_развертывания.docx"
+      ]
+    },
+    {
+      "item_id": "04_razvertyvanie_i_montazh_04_02_montazh_oborudovaniya_rukovodstvo_po_montazhu_oborudovaniya",
+      "title": "Руководство по монтажу оборудования",
+      "text_html": "<p>Раздел сформирован по документу <b>04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Руководство_по_монтажу_оборудования.pdf</b>.</p>",
+      "source_files": [
+        "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Руководство_по_монтажу_оборудования.pdf"
+      ]
+    },
+    {
+      "item_id": "04_razvertyvanie_i_montazh_04_03_podklyuchenie_i_proverka_poryadok_podklyucheniya_i_proverki_liniy",
+      "title": "Порядок подключения и проверки линий",
+      "text_html": "<p>Раздел сформирован по документу <b>04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Порядок_подключения_и_проверки_линий.docx</b>.</p>",
+      "source_files": [
+        "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Порядок_подключения_и_проверки_линий.docx"
+      ]
+    },
+    {
+      "item_id": "05_puskonaladka_i_priemka_05_01_pervichnyy_pusk_poryadok_pervichnogo_puska",
+      "title": "Порядок первичного пуска",
+      "text_html": "<p>Раздел сформирован по документу <b>05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Порядок_первичного_пуска.pdf</b>.</p>",
+      "source_files": [
+        "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Порядок_первичного_пуска.pdf"
+      ]
+    },
+    {
+      "item_id": "05_puskonaladka_i_priemka_05_02_ispytaniya_programma_i_metodika_ispytaniy",
+      "title": "Программа и методика испытаний",
+      "text_html": "<p>Раздел сформирован по документу <b>05_Пусконаладка_и_приемка/05_02_Испытания/Программа_и_методика_испытаний.docx</b>.</p>",
+      "source_files": [
+        "05_Пусконаладка_и_приемка/05_02_Испытания/Программа_и_методика_испытаний.docx"
+      ]
+    },
+    {
+      "item_id": "05_puskonaladka_i_priemka_05_03_akty_shablon_akta_gotovnosti_k_ekspluatacii",
+      "title": "Шаблон акта готовности к эксплуатации",
+      "text_html": "<p>Раздел сформирован по документу <b>05_Пусконаладка_и_приемка/05_03_Акты/Шаблон_акта_готовности_к_эксплуатации.docx</b>.</p>",
+      "source_files": [
+        "05_Пусконаладка_и_приемка/05_03_Акты/Шаблон_акта_готовности_к_эксплуатации.docx"
+      ]
+    },
+    {
+      "item_id": "06_ekspluataciya_06_01_operator_rukovodstvo_operatora",
+      "title": "Руководство оператора",
+      "text_html": "<p>Раздел сформирован по документу <b>06_Эксплуатация/06_01_Оператор/Руководство_оператора.pdf</b>.</p>",
+      "source_files": [
+        "06_Эксплуатация/06_01_Оператор/Руководство_оператора.pdf"
+      ]
+    },
+    {
+      "item_id": "06_ekspluataciya_06_02_administrator_reglament_ezhednevnogo_kontrolya",
+      "title": "Регламент ежедневного контроля",
+      "text_html": "<p>Раздел сформирован по документу <b>06_Эксплуатация/06_02_Администратор/Регламент_ежедневного_контроля.pdf</b>.</p>",
+      "source_files": [
+        "06_Эксплуатация/06_02_Администратор/Регламент_ежедневного_контроля.pdf"
+      ]
+    },
+    {
+      "item_id": "07_tehnicheskoe_obsluzhivanie_07_01_reglamentnye_raboty_reglament_tehnicheskogo_obsluzhivaniya",
+      "title": "Регламент технического обслуживания",
+      "text_html": "<p>Раздел сформирован по документу <b>07_Техническое_обслуживание/07_01_Регламентные_работы/Регламент_технического_обслуживания.docx</b>.</p>",
+      "source_files": [
+        "07_Техническое_обслуживание/07_01_Регламентные_работы/Регламент_технического_обслуживания.docx"
+      ]
+    },
+    {
+      "item_id": "07_tehnicheskoe_obsluzhivanie_07_02_zamena_komponentov_instrukciya_po_zamene_moduley",
+      "title": "Инструкция по замене модулей",
+      "text_html": "<p>Раздел сформирован по документу <b>07_Техническое_обслуживание/07_02_Замена_компонентов/Инструкция_по_замене_модулей.pdf</b>.</p>",
+      "source_files": [
+        "07_Техническое_обслуживание/07_02_Замена_компонентов/Инструкция_по_замене_модулей.pdf"
+      ]
+    },
+    {
+      "item_id": "08_diagnostika_i_avarii_08_01_kody_oshibok_spravochnik_kodov_oshibok",
+      "title": "Справочник кодов ошибок",
+      "text_html": "<p>Раздел сформирован по документу <b>08_Диагностика_и_аварии/08_01_Коды_ошибок/Справочник_кодов_ошибок.pdf</b>.</p>",
+      "source_files": [
+        "08_Диагностика_и_аварии/08_01_Коды_ошибок/Справочник_кодов_ошибок.pdf"
+      ]
+    },
+    {
+      "item_id": "08_diagnostika_i_avarii_08_02_algoritmy_ustraneniya_karta_diagnostiki_neispravnostey",
+      "title": "Карта диагностики неисправностей",
+      "text_html": "<p>Раздел сформирован по документу <b>08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Карта_диагностики_неисправностей.docx</b>.</p>",
+      "source_files": [
+        "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Карта_диагностики_неисправностей.docx"
+      ]
+    },
+    {
+      "item_id": "09_bezopasnost_09_01_ohrana_truda_trebovaniya_bezopasnosti_pri_rabote",
+      "title": "Требования безопасности при работе",
+      "text_html": "<p>Раздел сформирован по документу <b>09_Безопасность/09_01_Охрана_труда/Требования_безопасности_при_работе.pdf</b>.</p>",
+      "source_files": [
+        "09_Безопасность/09_01_Охрана_труда/Требования_безопасности_при_работе.pdf"
+      ]
+    },
+    {
+      "item_id": "09_bezopasnost_09_02_dostup_i_audit_poryadok_audita_deystviy_polzovateley",
+      "title": "Порядок аудита действий пользователей",
+      "text_html": "<p>Раздел сформирован по документу <b>09_Безопасность/09_02_Доступ_и_аудит/Порядок_аудита_действий_пользователей.docx</b>.</p>",
+      "source_files": [
+        "09_Безопасность/09_02_Доступ_и_аудит/Порядок_аудита_действий_пользователей.docx"
+      ]
+    },
+    {
+      "item_id": "10_obnovlenie_po_10_01_podgotovka_reliza_poryadok_obnovleniya_programmnogo_obespecheniya",
+      "title": "Порядок обновления программного обеспечения",
+      "text_html": "<p>Раздел сформирован по документу <b>10_Обновление_ПО/10_01_Подготовка_релиза/Порядок_обновления_программного_обеспечения.docx</b>.</p>",
+      "source_files": [
+        "10_Обновление_ПО/10_01_Подготовка_релиза/Порядок_обновления_программного_обеспечения.docx"
+      ]
+    },
+    {
+      "item_id": "10_obnovlenie_po_10_02_otkat_instrukciya_po_otkatu_versii",
+      "title": "Инструкция по откату версии",
+      "text_html": "<p>Раздел сформирован по документу <b>10_Обновление_ПО/10_02_Откат/Инструкция_по_откату_версии.pdf</b>.</p>",
+      "source_files": [
+        "10_Обновление_ПО/10_02_Откат/Инструкция_по_откату_версии.pdf"
+      ]
+    },
+    {
+      "item_id": "11_rezervnoe_kopirovanie_11_01_politika_backup_politika_rezervnogo_kopirovaniya",
+      "title": "Политика резервного копирования",
+      "text_html": "<p>Раздел сформирован по документу <b>11_Резервное_копирование/11_01_Политика_Backup/Политика_резервного_копирования.pdf</b>.</p>",
+      "source_files": [
+        "11_Резервное_копирование/11_01_Политика_Backup/Политика_резервного_копирования.pdf"
+      ]
+    },
+    {
+      "item_id": "11_rezervnoe_kopirovanie_11_02_vosstanovlenie_instrukciya_po_vosstanovleniyu_posle_sboya",
+      "title": "Инструкция по восстановлению после сбоя",
+      "text_html": "<p>Раздел сформирован по документу <b>11_Резервное_копирование/11_02_Восстановление/Инструкция_по_восстановлению_после_сбоя.docx</b>.</p>",
+      "source_files": [
+        "11_Резервное_копирование/11_02_Восстановление/Инструкция_по_восстановлению_после_сбоя.docx"
+      ]
+    },
+    {
+      "item_id": "12_integracii_api_12_01_rest_api_rukovodstvo_po_api",
+      "title": "Руководство по API",
+      "text_html": "<p>Раздел сформирован по документу <b>12_Интеграции_API/12_01_REST_API/Руководство_по_API.pdf</b>.</p>",
+      "source_files": [
+        "12_Интеграции_API/12_01_REST_API/Руководство_по_API.pdf"
+      ]
+    },
+    {
+      "item_id": "12_integracii_api_12_02_obmen_dannymi_reglament_obmena_dannymi_s_1s",
+      "title": "Регламент обмена данными с 1С",
+      "text_html": "<p>Раздел сформирован по документу <b>12_Интеграции_API/12_02_Обмен_данными/Регламент_обмена_данными_с_1С.docx</b>.</p>",
+      "source_files": [
+        "12_Интеграции_API/12_02_Обмен_данными/Регламент_обмена_данными_с_1С.docx"
+      ]
+    },
+    {
+      "item_id": "13_chertezhi_i_shemy_13_01_elektricheskie_shemy_opisanie_elektricheskoy_shemy",
+      "title": "Описание электрической схемы",
+      "text_html": "<p>Раздел сформирован по документу <b>13_Чертежи_и_схемы/13_01_Электрические_схемы/Описание_электрической_схемы.pdf</b>.</p>",
+      "source_files": [
+        "13_Чертежи_и_схемы/13_01_Электрические_схемы/Описание_электрической_схемы.pdf"
+      ]
+    },
+    {
+      "item_id": "13_chertezhi_i_shemy_13_02_montazhnye_shemy_opisanie_montazhnoy_shemy",
+      "title": "Описание монтажной схемы",
+      "text_html": "<p>Раздел сформирован по документу <b>13_Чертежи_и_схемы/13_02_Монтажные_схемы/Описание_монтажной_схемы.docx</b>.</p>",
+      "source_files": [
+        "13_Чертежи_и_схемы/13_02_Монтажные_схемы/Описание_монтажной_схемы.docx"
+      ]
+    },
+    {
+      "item_id": "14_komplektnost_i_zip_14_01_komplektnost_pasport_izdeliya_ksd_01",
+      "title": "Паспорт изделия КСД 01",
+      "text_html": "<p>Раздел сформирован по документу <b>14_Комплектность_и_ЗИП/14_01_Комплектность/Паспорт_изделия_КСД-01.pdf</b>.</p>",
+      "source_files": [
+        "14_Комплектность_и_ЗИП/14_01_Комплектность/Паспорт_изделия_КСД-01.pdf"
+      ]
+    },
+    {
+      "item_id": "15_formy_aktov_zhurnalov_15_01_akty_forma_akta_peredachi_v_ekspluataciyu",
+      "title": "Форма акта передачи в эксплуатацию",
+      "text_html": "<p>Раздел сформирован по документу <b>15_Формы_актов_журналов/15_01_Акты/Форма_акта_передачи_в_эксплуатацию.docx</b>.</p>",
+      "source_files": [
+        "15_Формы_актов_журналов/15_01_Акты/Форма_акта_передачи_в_эксплуатацию.docx"
+      ]
+    },
+    {
+      "item_id": "16_smeshannye_fayly_dlya_klassifikacii_16_01_bez_ochevidnyh_nazvaniy_dokument_a_17",
+      "title": "Документ А 17",
+      "text_html": "<p>Раздел сформирован по документу <b>16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_А-17.pdf</b>.</p>",
+      "source_files": [
+        "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_А-17.pdf"
+      ]
+    }
+  ],
+  "processed_documents": 38,
+  "selected_documents_count": 38,
+  "_fallback_used": true,
+  "_structure_warning": "Ollama вернула ответ не в формате справочника. Использован fallback по папкам архива.",
+  "menu_depth": 3,
+  "group_count": 52,
+  "item_count": 38,
+  "_raw_model_keys": [
+    "notes",
+    "project",
+    "structure"
+  ],
+  "_meta": {
+    "total_files_in_archive": 66,
+    "total_supported_candidates": 66,
+    "selected_documents_count": 38,
+    "selected_documents": [
+      {
+        "path": "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Описание_тестового_набора_для_ИИ.pdf",
+        "relpath": "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Описание_тестового_набора_для_ИИ.pdf",
+        "folder_path": "00_Паспорт_комплекта/00_00_Навигация_по_архиву",
+        "folder_parts": [
+          "00_Паспорт_комплекта",
+          "00_00_Навигация_по_архиву"
+        ],
+        "depth": 2,
+        "title": "Описание_тестового_набора_для_ИИ",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2677
+      },
+      {
+        "path": "00_Паспорт_комплекта/00_01_Состав_поставки/Паспорт_комплекта_документации_КСД-01.pdf",
+        "relpath": "00_Паспорт_комплекта/00_01_Состав_поставки/Паспорт_комплекта_документации_КСД-01.pdf",
+        "folder_path": "00_Паспорт_комплекта/00_01_Состав_поставки",
+        "folder_parts": [
+          "00_Паспорт_комплекта",
+          "00_01_Состав_поставки"
+        ],
+        "depth": 2,
+        "title": "Паспорт_комплекта_документации_КСД-01",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2225
+      },
+      {
+        "path": "01_Концепция_и_границы/01_01_Назначение/Описание_комплекса_КСД-01.pdf",
+        "relpath": "01_Концепция_и_границы/01_01_Назначение/Описание_комплекса_КСД-01.pdf",
+        "folder_path": "01_Концепция_и_границы/01_01_Назначение",
+        "folder_parts": [
+          "01_Концепция_и_границы",
+          "01_01_Назначение"
+        ],
+        "depth": 2,
+        "title": "Описание_комплекса_КСД-01",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2146
+      },
+      {
+        "path": "01_Концепция_и_границы/01_02_Термины_и_роли/Глоссарий_терминов_и_сокращений.docx",
+        "relpath": "01_Концепция_и_границы/01_02_Термины_и_роли/Глоссарий_терминов_и_сокращений.docx",
+        "folder_path": "01_Концепция_и_границы/01_02_Термины_и_роли",
+        "folder_parts": [
+          "01_Концепция_и_границы",
+          "01_02_Термины_и_роли"
+        ],
+        "depth": 2,
+        "title": "Глоссарий_терминов_и_сокращений",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2278
+      },
+      {
+        "path": "02_Архитектура/02_01_Логическая_модель/Архитектурное_описание_комплекса.pdf",
+        "relpath": "02_Архитектура/02_01_Логическая_модель/Архитектурное_описание_комплекса.pdf",
+        "folder_path": "02_Архитектура/02_01_Логическая_модель",
+        "folder_parts": [
+          "02_Архитектура",
+          "02_01_Логическая_модель"
+        ],
+        "depth": 2,
+        "title": "Архитектурное_описание_комплекса",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2531
+      },
+      {
+        "path": "02_Архитектура/02_02_Инфраструктура/Инфраструктурная_схема_узлов.pdf",
+        "relpath": "02_Архитектура/02_02_Инфраструктура/Инфраструктурная_схема_узлов.pdf",
+        "folder_path": "02_Архитектура/02_02_Инфраструктура",
+        "folder_parts": [
+          "02_Архитектура",
+          "02_02_Инфраструктура"
+        ],
+        "depth": 2,
+        "title": "Инфраструктурная_схема_узлов",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2171
+      },
+      {
+        "path": "02_Архитектура/02_03_Интеграции/Схема_информационных_потоков.docx",
+        "relpath": "02_Архитектура/02_03_Интеграции/Схема_информационных_потоков.docx",
+        "folder_path": "02_Архитектура/02_03_Интеграции",
+        "folder_parts": [
+          "02_Архитектура",
+          "02_03_Интеграции"
+        ],
+        "depth": 2,
+        "title": "Схема_информационных_потоков",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2283
+      },
+      {
+        "path": "03_Требования/03_01_Функциональные/Техническое_задание_на_комплекс.pdf",
+        "relpath": "03_Требования/03_01_Функциональные/Техническое_задание_на_комплекс.pdf",
+        "folder_path": "03_Требования/03_01_Функциональные",
+        "folder_parts": [
+          "03_Требования",
+          "03_01_Функциональные"
+        ],
+        "depth": 2,
+        "title": "Техническое_задание_на_комплекс",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2523
+      },
+      {
+        "path": "03_Требования/03_02_Нефункциональные/Требования_к_производительности_и_надёжности.docx",
+        "relpath": "03_Требования/03_02_Нефункциональные/Требования_к_производительности_и_надёжности.docx",
+        "folder_path": "03_Требования/03_02_Нефункциональные",
+        "folder_parts": [
+          "03_Требования",
+          "03_02_Нефункциональные"
+        ],
+        "depth": 2,
+        "title": "Требования_к_производительности_и_надёжности",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2346
+      },
+      {
+        "path": "03_Требования/03_03_Информационная_безопасность/Требования_информационной_безопасности.pdf",
+        "relpath": "03_Требования/03_03_Информационная_безопасность/Требования_информационной_безопасности.pdf",
+        "folder_path": "03_Требования/03_03_Информационная_безопасность",
+        "folder_parts": [
+          "03_Требования",
+          "03_03_Информационная_безопасность"
+        ],
+        "depth": 2,
+        "title": "Требования_информационной_безопасности",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2196
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Требования_к_среде_развертывания.docx",
+        "relpath": "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Требования_к_среде_развертывания.docx",
+        "folder_path": "04_Развертывание_и_монтаж/04_01_Подготовка_среды",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_01_Подготовка_среды"
+        ],
+        "depth": 2,
+        "title": "Требования_к_среде_развертывания",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2281
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Руководство_по_монтажу_оборудования.pdf",
+        "relpath": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Руководство_по_монтажу_оборудования.pdf",
+        "folder_path": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_02_Монтаж_оборудования"
+        ],
+        "depth": 2,
+        "title": "Руководство_по_монтажу_оборудования",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2518
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Порядок_подключения_и_проверки_линий.docx",
+        "relpath": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Порядок_подключения_и_проверки_линий.docx",
+        "folder_path": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_03_Подключение_и_проверка"
+        ],
+        "depth": 2,
+        "title": "Порядок_подключения_и_проверки_линий",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2292
+      },
+      {
+        "path": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Порядок_первичного_пуска.pdf",
+        "relpath": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Порядок_первичного_пуска.pdf",
+        "folder_path": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск",
+        "folder_parts": [
+          "05_Пусконаладка_и_приемка",
+          "05_01_Первичный_пуск"
+        ],
+        "depth": 2,
+        "title": "Порядок_первичного_пуска",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2171
+      },
+      {
+        "path": "05_Пусконаладка_и_приемка/05_02_Испытания/Программа_и_методика_испытаний.docx",
+        "relpath": "05_Пусконаладка_и_приемка/05_02_Испытания/Программа_и_методика_испытаний.docx",
+        "folder_path": "05_Пусконаладка_и_приемка/05_02_Испытания",
+        "folder_parts": [
+          "05_Пусконаладка_и_приемка",
+          "05_02_Испытания"
+        ],
+        "depth": 2,
+        "title": "Программа_и_методика_испытаний",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2264
+      },
+      {
+        "path": "05_Пусконаладка_и_приемка/05_03_Акты/Шаблон_акта_готовности_к_эксплуатации.docx",
+        "relpath": "05_Пусконаладка_и_приемка/05_03_Акты/Шаблон_акта_готовности_к_эксплуатации.docx",
+        "folder_path": "05_Пусконаладка_и_приемка/05_03_Акты",
+        "folder_parts": [
+          "05_Пусконаладка_и_приемка",
+          "05_03_Акты"
+        ],
+        "depth": 2,
+        "title": "Шаблон_акта_готовности_к_эксплуатации",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2280
+      },
+      {
+        "path": "06_Эксплуатация/06_01_Оператор/Руководство_оператора.pdf",
+        "relpath": "06_Эксплуатация/06_01_Оператор/Руководство_оператора.pdf",
+        "folder_path": "06_Эксплуатация/06_01_Оператор",
+        "folder_parts": [
+          "06_Эксплуатация",
+          "06_01_Оператор"
+        ],
+        "depth": 2,
+        "title": "Руководство_оператора",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2495
+      },
+      {
+        "path": "06_Эксплуатация/06_02_Администратор/Регламент_ежедневного_контроля.pdf",
+        "relpath": "06_Эксплуатация/06_02_Администратор/Регламент_ежедневного_контроля.pdf",
+        "folder_path": "06_Эксплуатация/06_02_Администратор",
+        "folder_parts": [
+          "06_Эксплуатация",
+          "06_02_Администратор"
+        ],
+        "depth": 2,
+        "title": "Регламент_ежедневного_контроля",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2178
+      },
+      {
+        "path": "07_Техническое_обслуживание/07_01_Регламентные_работы/Регламент_технического_обслуживания.docx",
+        "relpath": "07_Техническое_обслуживание/07_01_Регламентные_работы/Регламент_технического_обслуживания.docx",
+        "folder_path": "07_Техническое_обслуживание/07_01_Регламентные_работы",
+        "folder_parts": [
+          "07_Техническое_обслуживание",
+          "07_01_Регламентные_работы"
+        ],
+        "depth": 2,
+        "title": "Регламент_технического_обслуживания",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2519
+      },
+      {
+        "path": "07_Техническое_обслуживание/07_02_Замена_компонентов/Инструкция_по_замене_модулей.pdf",
+        "relpath": "07_Техническое_обслуживание/07_02_Замена_компонентов/Инструкция_по_замене_модулей.pdf",
+        "folder_path": "07_Техническое_обслуживание/07_02_Замена_компонентов",
+        "folder_parts": [
+          "07_Техническое_обслуживание",
+          "07_02_Замена_компонентов"
+        ],
+        "depth": 2,
+        "title": "Инструкция_по_замене_модулей",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2176
+      },
+      {
+        "path": "08_Диагностика_и_аварии/08_01_Коды_ошибок/Справочник_кодов_ошибок.pdf",
+        "relpath": "08_Диагностика_и_аварии/08_01_Коды_ошибок/Справочник_кодов_ошибок.pdf",
+        "folder_path": "08_Диагностика_и_аварии/08_01_Коды_ошибок",
+        "folder_parts": [
+          "08_Диагностика_и_аварии",
+          "08_01_Коды_ошибок"
+        ],
+        "depth": 2,
+        "title": "Справочник_кодов_ошибок",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2137
+      },
+      {
+        "path": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Карта_диагностики_неисправностей.docx",
+        "relpath": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Карта_диагностики_неисправностей.docx",
+        "folder_path": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения",
+        "folder_parts": [
+          "08_Диагностика_и_аварии",
+          "08_02_Алгоритмы_устранения"
+        ],
+        "depth": 2,
+        "title": "Карта_диагностики_неисправностей",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2298
+      },
+      {
+        "path": "09_Безопасность/09_01_Охрана_труда/Требования_безопасности_при_работе.pdf",
+        "relpath": "09_Безопасность/09_01_Охрана_труда/Требования_безопасности_при_работе.pdf",
+        "folder_path": "09_Безопасность/09_01_Охрана_труда",
+        "folder_parts": [
+          "09_Безопасность",
+          "09_01_Охрана_труда"
+        ],
+        "depth": 2,
+        "title": "Требования_безопасности_при_работе",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2177
+      },
+      {
+        "path": "09_Безопасность/09_02_Доступ_и_аудит/Порядок_аудита_действий_пользователей.docx",
+        "relpath": "09_Безопасность/09_02_Доступ_и_аудит/Порядок_аудита_действий_пользователей.docx",
+        "folder_path": "09_Безопасность/09_02_Доступ_и_аудит",
+        "folder_parts": [
+          "09_Безопасность",
+          "09_02_Доступ_и_аудит"
+        ],
+        "depth": 2,
+        "title": "Порядок_аудита_действий_пользователей",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2299
+      },
+      {
+        "path": "10_Обновление_ПО/10_01_Подготовка_релиза/Порядок_обновления_программного_обеспечения.docx",
+        "relpath": "10_Обновление_ПО/10_01_Подготовка_релиза/Порядок_обновления_программного_обеспечения.docx",
+        "folder_path": "10_Обновление_ПО/10_01_Подготовка_релиза",
+        "folder_parts": [
+          "10_Обновление_ПО",
+          "10_01_Подготовка_релиза"
+        ],
+        "depth": 2,
+        "title": "Порядок_обновления_программного_обеспечения",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2302
+      },
+      {
+        "path": "10_Обновление_ПО/10_02_Откат/Инструкция_по_откату_версии.pdf",
+        "relpath": "10_Обновление_ПО/10_02_Откат/Инструкция_по_откату_версии.pdf",
+        "folder_path": "10_Обновление_ПО/10_02_Откат",
+        "folder_parts": [
+          "10_Обновление_ПО",
+          "10_02_Откат"
+        ],
+        "depth": 2,
+        "title": "Инструкция_по_откату_версии",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2149
+      },
+      {
+        "path": "11_Резервное_копирование/11_01_Политика_Backup/Политика_резервного_копирования.pdf",
+        "relpath": "11_Резервное_копирование/11_01_Политика_Backup/Политика_резервного_копирования.pdf",
+        "folder_path": "11_Резервное_копирование/11_01_Политика_Backup",
+        "folder_parts": [
+          "11_Резервное_копирование",
+          "11_01_Политика_Backup"
+        ],
+        "depth": 2,
+        "title": "Политика_резервного_копирования",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2506
+      },
+      {
+        "path": "11_Резервное_копирование/11_02_Восстановление/Инструкция_по_восстановлению_после_сбоя.docx",
+        "relpath": "11_Резервное_копирование/11_02_Восстановление/Инструкция_по_восстановлению_после_сбоя.docx",
+        "folder_path": "11_Резервное_копирование/11_02_Восстановление",
+        "folder_parts": [
+          "11_Резервное_копирование",
+          "11_02_Восстановление"
+        ],
+        "depth": 2,
+        "title": "Инструкция_по_восстановлению_после_сбоя",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2324
+      },
+      {
+        "path": "12_Интеграции_API/12_01_REST_API/Руководство_по_API.pdf",
+        "relpath": "12_Интеграции_API/12_01_REST_API/Руководство_по_API.pdf",
+        "folder_path": "12_Интеграции_API/12_01_REST_API",
+        "folder_parts": [
+          "12_Интеграции_API",
+          "12_01_REST_API"
+        ],
+        "depth": 2,
+        "title": "Руководство_по_API",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2482
+      },
+      {
+        "path": "12_Интеграции_API/12_02_Обмен_данными/Регламент_обмена_данными_с_1С.docx",
+        "relpath": "12_Интеграции_API/12_02_Обмен_данными/Регламент_обмена_данными_с_1С.docx",
+        "folder_path": "12_Интеграции_API/12_02_Обмен_данными",
+        "folder_parts": [
+          "12_Интеграции_API",
+          "12_02_Обмен_данными"
+        ],
+        "depth": 2,
+        "title": "Регламент_обмена_данными_с_1С",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2279
+      },
+      {
+        "path": "13_Чертежи_и_схемы/13_01_Электрические_схемы/Описание_электрической_схемы.pdf",
+        "relpath": "13_Чертежи_и_схемы/13_01_Электрические_схемы/Описание_электрической_схемы.pdf",
+        "folder_path": "13_Чертежи_и_схемы/13_01_Электрические_схемы",
+        "folder_parts": [
+          "13_Чертежи_и_схемы",
+          "13_01_Электрические_схемы"
+        ],
+        "depth": 2,
+        "title": "Описание_электрической_схемы",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2167
+      },
+      {
+        "path": "13_Чертежи_и_схемы/13_02_Монтажные_схемы/Описание_монтажной_схемы.docx",
+        "relpath": "13_Чертежи_и_схемы/13_02_Монтажные_схемы/Описание_монтажной_схемы.docx",
+        "folder_path": "13_Чертежи_и_схемы/13_02_Монтажные_схемы",
+        "folder_parts": [
+          "13_Чертежи_и_схемы",
+          "13_02_Монтажные_схемы"
+        ],
+        "depth": 2,
+        "title": "Описание_монтажной_схемы",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2258
+      },
+      {
+        "path": "14_Комплектность_и_ЗИП/14_01_Комплектность/Паспорт_изделия_КСД-01.pdf",
+        "relpath": "14_Комплектность_и_ЗИП/14_01_Комплектность/Паспорт_изделия_КСД-01.pdf",
+        "folder_path": "14_Комплектность_и_ЗИП/14_01_Комплектность",
+        "folder_parts": [
+          "14_Комплектность_и_ЗИП",
+          "14_01_Комплектность"
+        ],
+        "depth": 2,
+        "title": "Паспорт_изделия_КСД-01",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2155
+      },
+      {
+        "path": "15_Формы_актов_журналов/15_01_Акты/Форма_акта_передачи_в_эксплуатацию.docx",
+        "relpath": "15_Формы_актов_журналов/15_01_Акты/Форма_акта_передачи_в_эксплуатацию.docx",
+        "folder_path": "15_Формы_актов_журналов/15_01_Акты",
+        "folder_parts": [
+          "15_Формы_актов_журналов",
+          "15_01_Акты"
+        ],
+        "depth": 2,
+        "title": "Форма_акта_передачи_в_эксплуатацию",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2303
+      },
+      {
+        "path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_А-17.pdf",
+        "relpath": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_А-17.pdf",
+        "folder_path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий",
+        "folder_parts": [
+          "16_Смешанные_файлы_для_классификации",
+          "16_01_Без_очевидных_названий"
+        ],
+        "depth": 2,
+        "title": "Документ_А-17",
+        "ext": ".pdf",
+        "encoding": null,
+        "chars_count": 2245
+      },
+      {
+        "path": "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Навигация_по_архиву_и_ожидаемая_структура.docx",
+        "relpath": "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Навигация_по_архиву_и_ожидаемая_структура.docx",
+        "folder_path": "00_Паспорт_комплекта/00_00_Навигация_по_архиву",
+        "folder_parts": [
+          "00_Паспорт_комплекта",
+          "00_00_Навигация_по_архиву"
+        ],
+        "depth": 2,
+        "title": "Навигация_по_архиву_и_ожидаемая_структура",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2798
+      },
+      {
+        "path": "01_Концепция_и_границы/01_01_Назначение/Концепция_системы_и_границы_применения.docx",
+        "relpath": "01_Концепция_и_границы/01_01_Назначение/Концепция_системы_и_границы_применения.docx",
+        "folder_path": "01_Концепция_и_границы/01_01_Назначение",
+        "folder_parts": [
+          "01_Концепция_и_границы",
+          "01_01_Назначение"
+        ],
+        "depth": 2,
+        "title": "Концепция_системы_и_границы_применения",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2299
+      },
+      {
+        "path": "02_Архитектура/02_01_Логическая_модель/Описание_модулей_и_подсистем.docx",
+        "relpath": "02_Архитектура/02_01_Логическая_модель/Описание_модулей_и_подсистем.docx",
+        "folder_path": "02_Архитектура/02_01_Логическая_модель",
+        "folder_parts": [
+          "02_Архитектура",
+          "02_01_Логическая_модель"
+        ],
+        "depth": 2,
+        "title": "Описание_модулей_и_подсистем",
+        "ext": ".docx",
+        "encoding": null,
+        "chars_count": 2274
+      }
+    ],
+    "skipped_files_count": 28,
+    "skipped_files": [
+      {
+        "path": "00_Паспорт_комплекта/00_02_Контрольная_структура/Контрольная_карта_ожидаемой_структуры.xlsx",
+        "relpath": "00_Паспорт_комплекта/00_02_Контрольная_структура/Контрольная_карта_ожидаемой_структуры.xlsx",
+        "folder_path": "00_Паспорт_комплекта/00_02_Контрольная_структура",
+        "folder_parts": [
+          "00_Паспорт_комплекта",
+          "00_02_Контрольная_структура"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "14_Комплектность_и_ЗИП/14_02_ЗИП/Реестр_запасных_частей_и_материалов.xlsx",
+        "relpath": "14_Комплектность_и_ЗИП/14_02_ЗИП/Реестр_запасных_частей_и_материалов.xlsx",
+        "folder_path": "14_Комплектность_и_ЗИП/14_02_ЗИП",
+        "folder_parts": [
+          "14_Комплектность_и_ЗИП",
+          "14_02_ЗИП"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "15_Формы_актов_журналов/15_02_Журналы/Журнал_учёта_работ.xlsx",
+        "relpath": "15_Формы_актов_журналов/15_02_Журналы/Журнал_учёта_работ.xlsx",
+        "folder_path": "15_Формы_актов_журналов/15_02_Журналы",
+        "folder_parts": [
+          "15_Формы_актов_журналов",
+          "15_02_Журналы"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "01_Концепция_и_границы/01_02_Термины_и_роли/Матрица_ролей_и_ответственности.xlsx",
+        "relpath": "01_Концепция_и_границы/01_02_Термины_и_роли/Матрица_ролей_и_ответственности.xlsx",
+        "folder_path": "01_Концепция_и_границы/01_02_Термины_и_роли",
+        "folder_parts": [
+          "01_Концепция_и_границы",
+          "01_02_Термины_и_роли"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "02_Архитектура/02_02_Инфраструктура/Матрица_портов_и_сетевых_взаимодействий.xlsx",
+        "relpath": "02_Архитектура/02_02_Инфраструктура/Матрица_портов_и_сетевых_взаимодействий.xlsx",
+        "folder_path": "02_Архитектура/02_02_Инфраструктура",
+        "folder_parts": [
+          "02_Архитектура",
+          "02_02_Инфраструктура"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "03_Требования/03_01_Функциональные/Реестр_функциональных_требований.xlsx",
+        "relpath": "03_Требования/03_01_Функциональные/Реестр_функциональных_требований.xlsx",
+        "folder_path": "03_Требования/03_01_Функциональные",
+        "folder_parts": [
+          "03_Требования",
+          "03_01_Функциональные"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "03_Требования/03_02_Нефункциональные/Профиль_нагрузочного_тестирования.xlsx",
+        "relpath": "03_Требования/03_02_Нефункциональные/Профиль_нагрузочного_тестирования.xlsx",
+        "folder_path": "03_Требования/03_02_Нефункциональные",
+        "folder_parts": [
+          "03_Требования",
+          "03_02_Нефункциональные"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "03_Требования/03_03_Информационная_безопасность/Матрица_прав_доступа.xlsx",
+        "relpath": "03_Требования/03_03_Информационная_безопасность/Матрица_прав_доступа.xlsx",
+        "folder_path": "03_Требования/03_03_Информационная_безопасность",
+        "folder_parts": [
+          "03_Требования",
+          "03_03_Информационная_безопасность"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Чеклист_готовности_площадки.xlsx",
+        "relpath": "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Чеклист_готовности_площадки.xlsx",
+        "folder_path": "04_Развертывание_и_монтаж/04_01_Подготовка_среды",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_01_Подготовка_среды"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Ведомость_монтажных_операций.xlsx",
+        "relpath": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Ведомость_монтажных_операций.xlsx",
+        "folder_path": "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_02_Монтаж_оборудования"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Протокол_первичной_проверки_подключений.xlsx",
+        "relpath": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Протокол_первичной_проверки_подключений.xlsx",
+        "folder_path": "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка",
+        "folder_parts": [
+          "04_Развертывание_и_монтаж",
+          "04_03_Подключение_и_проверка"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Лист_проверки_первичного_пуска.xlsx",
+        "relpath": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Лист_проверки_первичного_пуска.xlsx",
+        "folder_path": "05_Пусконаладка_и_приемка/05_01_Первичный_пуск",
+        "folder_parts": [
+          "05_Пусконаладка_и_приемка",
+          "05_01_Первичный_пуск"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "openpyxl не установлен",
+        "skipped_reason": "openpyxl не установлен"
+      },
+      {
+        "path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_Б-42.docx",
+        "relpath": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_Б-42.docx",
+        "folder_path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий",
+        "folder_parts": [
+          "16_Смешанные_файлы_для_классификации",
+          "16_01_Без_очевидных_названий"
+        ],
+        "depth": 2,
+        "ext": ".docx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Таблица_С-09.xlsx",
+        "relpath": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Таблица_С-09.xlsx",
+        "folder_path": "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий",
+        "folder_parts": [
+          "16_Смешанные_файлы_для_классификации",
+          "16_01_Без_очевидных_названий"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "15_Формы_актов_журналов/15_01_Акты/Форма_акта_приёмки_монтажных_работ.docx",
+        "relpath": "15_Формы_актов_журналов/15_01_Акты/Форма_акта_приёмки_монтажных_работ.docx",
+        "folder_path": "15_Формы_актов_журналов/15_01_Акты",
+        "folder_parts": [
+          "15_Формы_актов_журналов",
+          "15_01_Акты"
+        ],
+        "depth": 2,
+        "ext": ".docx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "14_Комплектность_и_ЗИП/14_01_Комплектность/Ведомость_комплектности_поставки.xlsx",
+        "relpath": "14_Комплектность_и_ЗИП/14_01_Комплектность/Ведомость_комплектности_поставки.xlsx",
+        "folder_path": "14_Комплектность_и_ЗИП/14_01_Комплектность",
+        "folder_parts": [
+          "14_Комплектность_и_ЗИП",
+          "14_01_Комплектность"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "13_Чертежи_и_схемы/13_01_Электрические_схемы/Перечень_цепей_и_сигналов.xlsx",
+        "relpath": "13_Чертежи_и_схемы/13_01_Электрические_схемы/Перечень_цепей_и_сигналов.xlsx",
+        "folder_path": "13_Чертежи_и_схемы/13_01_Электрические_схемы",
+        "folder_parts": [
+          "13_Чертежи_и_схемы",
+          "13_01_Электрические_схемы"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "12_Интеграции_API/12_01_REST_API/Каталог_API_методов.xlsx",
+        "relpath": "12_Интеграции_API/12_01_REST_API/Каталог_API_методов.xlsx",
+        "folder_path": "12_Интеграции_API/12_01_REST_API",
+        "folder_parts": [
+          "12_Интеграции_API",
+          "12_01_REST_API"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "11_Резервное_копирование/11_01_Политика_Backup/План_резервного_копирования.xlsx",
+        "relpath": "11_Резервное_копирование/11_01_Политика_Backup/План_резервного_копирования.xlsx",
+        "folder_path": "11_Резервное_копирование/11_01_Политика_Backup",
+        "folder_parts": [
+          "11_Резервное_копирование",
+          "11_01_Политика_Backup"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "10_Обновление_ПО/10_01_Подготовка_релиза/Реестр_версий_и_релизов.xlsx",
+        "relpath": "10_Обновление_ПО/10_01_Подготовка_релиза/Реестр_версий_и_релизов.xlsx",
+        "folder_path": "10_Обновление_ПО/10_01_Подготовка_релиза",
+        "folder_parts": [
+          "10_Обновление_ПО",
+          "10_01_Подготовка_релиза"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "09_Безопасность/09_01_Охрана_труда/Журнал_инструктажа_по_безопасности.xlsx",
+        "relpath": "09_Безопасность/09_01_Охрана_труда/Журнал_инструктажа_по_безопасности.xlsx",
+        "folder_path": "09_Безопасность/09_01_Охрана_труда",
+        "folder_parts": [
+          "09_Безопасность",
+          "09_01_Охрана_труда"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "08_Диагностика_и_аварии/08_01_Коды_ошибок/Реестр_аварийных_событий.xlsx",
+        "relpath": "08_Диагностика_и_аварии/08_01_Коды_ошибок/Реестр_аварийных_событий.xlsx",
+        "folder_path": "08_Диагностика_и_аварии/08_01_Коды_ошибок",
+        "folder_parts": [
+          "08_Диагностика_и_аварии",
+          "08_01_Коды_ошибок"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Протокол_разбора_инцидента.docx",
+        "relpath": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Протокол_разбора_инцидента.docx",
+        "folder_path": "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения",
+        "folder_parts": [
+          "08_Диагностика_и_аварии",
+          "08_02_Алгоритмы_устранения"
+        ],
+        "depth": 2,
+        "ext": ".docx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "07_Техническое_обслуживание/07_01_Регламентные_работы/График_регламентных_работ.xlsx",
+        "relpath": "07_Техническое_обслуживание/07_01_Регламентные_работы/График_регламентных_работ.xlsx",
+        "folder_path": "07_Техническое_обслуживание/07_01_Регламентные_работы",
+        "folder_parts": [
+          "07_Техническое_обслуживание",
+          "07_01_Регламентные_работы"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "07_Техническое_обслуживание/07_02_Замена_компонентов/Ведомость_ЗИП_и_замен.xlsx",
+        "relpath": "07_Техническое_обслуживание/07_02_Замена_компонентов/Ведомость_ЗИП_и_замен.xlsx",
+        "folder_path": "07_Техническое_обслуживание/07_02_Замена_компонентов",
+        "folder_parts": [
+          "07_Техническое_обслуживание",
+          "07_02_Замена_компонентов"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "06_Эксплуатация/06_01_Оператор/Журнал_смены_оператора.xlsx",
+        "relpath": "06_Эксплуатация/06_01_Оператор/Журнал_смены_оператора.xlsx",
+        "folder_path": "06_Эксплуатация/06_01_Оператор",
+        "folder_parts": [
+          "06_Эксплуатация",
+          "06_01_Оператор"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "06_Эксплуатация/06_02_Администратор/Руководство_администратора.docx",
+        "relpath": "06_Эксплуатация/06_02_Администратор/Руководство_администратора.docx",
+        "folder_path": "06_Эксплуатация/06_02_Администратор",
+        "folder_parts": [
+          "06_Эксплуатация",
+          "06_02_Администратор"
+        ],
+        "depth": 2,
+        "ext": ".docx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      },
+      {
+        "path": "05_Пусконаладка_и_приемка/05_02_Испытания/Матрица_приемочных_испытаний.xlsx",
+        "relpath": "05_Пусконаладка_и_приемка/05_02_Испытания/Матрица_приемочных_испытаний.xlsx",
+        "folder_path": "05_Пусконаладка_и_приемка/05_02_Испытания",
+        "folder_parts": [
+          "05_Пусконаладка_и_приемка",
+          "05_02_Испытания"
+        ],
+        "depth": 2,
+        "ext": ".xlsx",
+        "reason": "не выбран из-за ограничения AI_MAX_DOCS=50",
+        "skipped_reason": "не выбран из-за ограничения AI_MAX_DOCS=50"
+      }
+    ],
+    "folders_detected": [
+      "00_Паспорт_комплекта/00_00_Навигация_по_архиву",
+      "00_Паспорт_комплекта/00_01_Состав_поставки",
+      "00_Паспорт_комплекта/00_02_Контрольная_структура",
+      "01_Концепция_и_границы/01_01_Назначение",
+      "01_Концепция_и_границы/01_02_Термины_и_роли",
+      "02_Архитектура/02_01_Логическая_модель",
+      "02_Архитектура/02_02_Инфраструктура",
+      "02_Архитектура/02_03_Интеграции",
+      "03_Требования/03_01_Функциональные",
+      "03_Требования/03_02_Нефункциональные",
+      "03_Требования/03_03_Информационная_безопасность",
+      "04_Развертывание_и_монтаж/04_01_Подготовка_среды",
+      "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования",
+      "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка",
+      "05_Пусконаладка_и_приемка/05_01_Первичный_пуск",
+      "05_Пусконаладка_и_приемка/05_02_Испытания",
+      "05_Пусконаладка_и_приемка/05_03_Акты",
+      "06_Эксплуатация/06_01_Оператор",
+      "06_Эксплуатация/06_02_Администратор",
+      "07_Техническое_обслуживание/07_01_Регламентные_работы",
+      "07_Техническое_обслуживание/07_02_Замена_компонентов",
+      "08_Диагностика_и_аварии/08_01_Коды_ошибок",
+      "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения",
+      "09_Безопасность/09_01_Охрана_труда",
+      "09_Безопасность/09_02_Доступ_и_аудит",
+      "10_Обновление_ПО/10_01_Подготовка_релиза",
+      "10_Обновление_ПО/10_02_Откат",
+      "11_Резервное_копирование/11_01_Политика_Backup",
+      "11_Резервное_копирование/11_02_Восстановление",
+      "12_Интеграции_API/12_01_REST_API",
+      "12_Интеграции_API/12_02_Обмен_данными",
+      "13_Чертежи_и_схемы/13_01_Электрические_схемы",
+      "13_Чертежи_и_схемы/13_02_Монтажные_схемы",
+      "14_Комплектность_и_ЗИП/14_01_Комплектность",
+      "14_Комплектность_и_ЗИП/14_02_ЗИП",
+      "15_Формы_актов_журналов/15_01_Акты",
+      "15_Формы_актов_журналов/15_02_Журналы",
+      "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий"
+    ],
+    "max_archive_depth": 2,
+    "max_docs": 50,
+    "max_chars_per_doc": 4000,
+    "num_predict": 8192,
+    "archive_tree_depth": 2,
+    "menu_depth": 3,
+    "group_count": 52,
+    "item_count": 38,
+    "archive_name": "ksd_vector_deep_pdf_word_excel.zip",
+    "ollama_model": "qwen3:8b",
+    "ollama_base_url": "http://192.168.6.39:11434",
+    "archive_files": [
+      "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Навигация_по_архиву_и_ожидаемая_структура.docx",
+      "00_Паспорт_комплекта/00_00_Навигация_по_архиву/Описание_тестового_набора_для_ИИ.pdf",
+      "00_Паспорт_комплекта/00_01_Состав_поставки/Паспорт_комплекта_документации_КСД-01.pdf",
+      "00_Паспорт_комплекта/00_02_Контрольная_структура/Контрольная_карта_ожидаемой_структуры.xlsx",
+      "01_Концепция_и_границы/01_01_Назначение/Концепция_системы_и_границы_применения.docx",
+      "01_Концепция_и_границы/01_01_Назначение/Описание_комплекса_КСД-01.pdf",
+      "01_Концепция_и_границы/01_02_Термины_и_роли/Глоссарий_терминов_и_сокращений.docx",
+      "01_Концепция_и_границы/01_02_Термины_и_роли/Матрица_ролей_и_ответственности.xlsx",
+      "02_Архитектура/02_01_Логическая_модель/Архитектурное_описание_комплекса.pdf",
+      "02_Архитектура/02_01_Логическая_модель/Описание_модулей_и_подсистем.docx",
+      "02_Архитектура/02_02_Инфраструктура/Инфраструктурная_схема_узлов.pdf",
+      "02_Архитектура/02_02_Инфраструктура/Матрица_портов_и_сетевых_взаимодействий.xlsx",
+      "02_Архитектура/02_03_Интеграции/Схема_информационных_потоков.docx",
+      "03_Требования/03_01_Функциональные/Реестр_функциональных_требований.xlsx",
+      "03_Требования/03_01_Функциональные/Техническое_задание_на_комплекс.pdf",
+      "03_Требования/03_02_Нефункциональные/Профиль_нагрузочного_тестирования.xlsx",
+      "03_Требования/03_02_Нефункциональные/Требования_к_производительности_и_надёжности.docx",
+      "03_Требования/03_03_Информационная_безопасность/Матрица_прав_доступа.xlsx",
+      "03_Требования/03_03_Информационная_безопасность/Требования_информационной_безопасности.pdf",
+      "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Требования_к_среде_развертывания.docx",
+      "04_Развертывание_и_монтаж/04_01_Подготовка_среды/Чеклист_готовности_площадки.xlsx",
+      "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Ведомость_монтажных_операций.xlsx",
+      "04_Развертывание_и_монтаж/04_02_Монтаж_оборудования/Руководство_по_монтажу_оборудования.pdf",
+      "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Порядок_подключения_и_проверки_линий.docx",
+      "04_Развертывание_и_монтаж/04_03_Подключение_и_проверка/Протокол_первичной_проверки_подключений.xlsx",
+      "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Лист_проверки_первичного_пуска.xlsx",
+      "05_Пусконаладка_и_приемка/05_01_Первичный_пуск/Порядок_первичного_пуска.pdf",
+      "05_Пусконаладка_и_приемка/05_02_Испытания/Матрица_приемочных_испытаний.xlsx",
+      "05_Пусконаладка_и_приемка/05_02_Испытания/Программа_и_методика_испытаний.docx",
+      "05_Пусконаладка_и_приемка/05_03_Акты/Шаблон_акта_готовности_к_эксплуатации.docx",
+      "06_Эксплуатация/06_01_Оператор/Журнал_смены_оператора.xlsx",
+      "06_Эксплуатация/06_01_Оператор/Руководство_оператора.pdf",
+      "06_Эксплуатация/06_02_Администратор/Регламент_ежедневного_контроля.pdf",
+      "06_Эксплуатация/06_02_Администратор/Руководство_администратора.docx",
+      "07_Техническое_обслуживание/07_01_Регламентные_работы/График_регламентных_работ.xlsx",
+      "07_Техническое_обслуживание/07_01_Регламентные_работы/Регламент_технического_обслуживания.docx",
+      "07_Техническое_обслуживание/07_02_Замена_компонентов/Ведомость_ЗИП_и_замен.xlsx",
+      "07_Техническое_обслуживание/07_02_Замена_компонентов/Инструкция_по_замене_модулей.pdf",
+      "08_Диагностика_и_аварии/08_01_Коды_ошибок/Реестр_аварийных_событий.xlsx",
+      "08_Диагностика_и_аварии/08_01_Коды_ошибок/Справочник_кодов_ошибок.pdf",
+      "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Карта_диагностики_неисправностей.docx",
+      "08_Диагностика_и_аварии/08_02_Алгоритмы_устранения/Протокол_разбора_инцидента.docx",
+      "09_Безопасность/09_01_Охрана_труда/Журнал_инструктажа_по_безопасности.xlsx",
+      "09_Безопасность/09_01_Охрана_труда/Требования_безопасности_при_работе.pdf",
+      "09_Безопасность/09_02_Доступ_и_аудит/Порядок_аудита_действий_пользователей.docx",
+      "10_Обновление_ПО/10_01_Подготовка_релиза/Порядок_обновления_программного_обеспечения.docx",
+      "10_Обновление_ПО/10_01_Подготовка_релиза/Реестр_версий_и_релизов.xlsx",
+      "10_Обновление_ПО/10_02_Откат/Инструкция_по_откату_версии.pdf",
+      "11_Резервное_копирование/11_01_Политика_Backup/План_резервного_копирования.xlsx",
+      "11_Резервное_копирование/11_01_Политика_Backup/Политика_резервного_копирования.pdf",
+      "11_Резервное_копирование/11_02_Восстановление/Инструкция_по_восстановлению_после_сбоя.docx",
+      "12_Интеграции_API/12_01_REST_API/Каталог_API_методов.xlsx",
+      "12_Интеграции_API/12_01_REST_API/Руководство_по_API.pdf",
+      "12_Интеграции_API/12_02_Обмен_данными/Регламент_обмена_данными_с_1С.docx",
+      "13_Чертежи_и_схемы/13_01_Электрические_схемы/Описание_электрической_схемы.pdf",
+      "13_Чертежи_и_схемы/13_01_Электрические_схемы/Перечень_цепей_и_сигналов.xlsx",
+      "13_Чертежи_и_схемы/13_02_Монтажные_схемы/Описание_монтажной_схемы.docx",
+      "14_Комплектность_и_ЗИП/14_01_Комплектность/Ведомость_комплектности_поставки.xlsx",
+      "14_Комплектность_и_ЗИП/14_01_Комплектность/Паспорт_изделия_КСД-01.pdf",
+      "14_Комплектность_и_ЗИП/14_02_ЗИП/Реестр_запасных_частей_и_материалов.xlsx",
+      "15_Формы_актов_журналов/15_01_Акты/Форма_акта_передачи_в_эксплуатацию.docx",
+      "15_Формы_актов_журналов/15_01_Акты/Форма_акта_приёмки_монтажных_работ.docx",
+      "15_Формы_актов_журналов/15_02_Журналы/Журнал_учёта_работ.xlsx",
+      "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_А-17.pdf",
+      "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Документ_Б-42.docx",
+      "16_Смешанные_файлы_для_классификации/16_01_Без_очевидных_названий/Таблица_С-09.xlsx"
+    ],
+    "fallback_used": true,
+    "structure_warning": "Ollama вернула ответ не в формате справочника. Использован fallback по папкам архива."
+  }
+}

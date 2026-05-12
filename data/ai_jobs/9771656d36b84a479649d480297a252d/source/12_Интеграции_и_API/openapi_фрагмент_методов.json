@@ -1,0 +1,28 @@
+{
+  "title": "Фрагмент API КСД-01",
+  "version": "2.4.1",
+  "methods": [
+    {
+      "method": "GET",
+      "path": "/api/v1/status",
+      "description": "Получить статус комплекса"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/events/search",
+      "description": "Поиск событий журнала"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/backup/start",
+      "description": "Запуск резервного копирования"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/maintenance/report",
+      "description": "Загрузка отчета обслуживания"
+    }
+  ],
+  "auth": "token в заголовке X-API-Key",
+  "notes": "Файл должен быть классифицирован в раздел интеграций и API."
+}

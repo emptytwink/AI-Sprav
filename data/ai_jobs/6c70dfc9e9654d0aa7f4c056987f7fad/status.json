@@ -1,0 +1,10 @@
+{
+  "job_id": "6c70dfc9e9654d0aa7f4c056987f7fad",
+  "status": "applied",
+  "message": "ИИ-структура добавлена отдельной веткой справочника.",
+  "progress": 100,
+  "error": null,
+  "archive_name": "demo_ai_sprav_docs.zip",
+  "created_at": "2026-05-12T11:03:28",
+  "finished_at": "2026-05-12T11:04:25"
+}

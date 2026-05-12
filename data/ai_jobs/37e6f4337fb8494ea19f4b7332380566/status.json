@@ -1,0 +1,10 @@
+{
+  "job_id": "37e6f4337fb8494ea19f4b7332380566",
+  "status": "analyzing",
+  "message": "Ollama анализирует документы...",
+  "progress": 60,
+  "error": null,
+  "archive_name": "light_ai_sprav_docs.zip",
+  "created_at": "2026-05-12T10:50:49",
+  "finished_at": null
+}

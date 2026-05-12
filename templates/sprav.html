@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Справочник ОСП-5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/css/sprav.css" />
+  <link rel="stylesheet" href="/static/css/menuEditor.css" />
+  <link rel="stylesheet" href="/static/css/contentEditor.css" />
+</head>
+<body>
+<header class="top-bar">
+  <svg class="header-bg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+    <path d="M0,60 C360,120 1080,0 1440,80 L1440,0 L0,0 Z" fill="#004d4f"/>
+    <path d="M0,80 C480,140 960,20 1440,70 L1440,0 L0,0 Z" fill="#007378" opacity="0.8"/>
+    <path d="M0,90 C600,150 900,0 1440,60 L1440,0 L0,0 Z" fill="#d1f6f6" opacity="0.5"/>
+  </svg>
+  <div class="header-content">
+    <div class="logo-block">
+      <a id="go-home" href="#" title="Главная">
+        <img src="/static/images/Logo_MERA_white.png" class="logo" alt="Логотип"/>
+      </a>
+      <div class="project-info">
+        <div id="project-title" class="project-title">Справочник</div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <label class="switch" title="Режим редактирования">
+        <input id="toggle-edit" type="checkbox">
+        <span class="slider"></span>
+      </label>
+
+      <!-- кнопка экспорта -->
+      <a class="main-button edit-mode-only"
+         id="btn-export-zip"
+         href="/export/project_data"
+         title="Собрать и скачать ZIP с фронтендом">
+        Выгрузить
+      </a>
+      <button class="main-button edit-mode-only"
+              id="btn-ai-import"
+              type="button"
+              title="Собрать структуру справочника из ZIP через локальную Ollama">
+        ИИ-сбор справочника
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="layout" id="app">
+  <aside class="sidebar">
+    <div class="menu-search">
+      <input type="text" id="menu-search-input" placeholder="Поиск по меню...">
+    </div>
+    <nav class="accordion-menu">
+      <ul class="menu" id="menu-root"></ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div id="content-pane" class="content-pane">
+      <div class="content-header">
+        <h2 id="content-title">Выберите пункт меню</h2>
+        <div class="content-actions"></div>
+      </div>
+      <div id="breadcrumbs" class="breadcrumbs" hidden></div>
+      <!-- Ряд вкладок + кнопка "+" справа -->
+      <div class="tabs-bar" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <div class="tabs" id="tabs-row" style="display:flex; gap:8px; flex-wrap:wrap; flex:1;">
+          <!-- кнопки вкладок генерируются скриптом -->
+        </div>
+        <div class="tabs-actions">
+          <button id="btn-add-tab" class="tab-btn edit-mode-only" title="Добавить вкладку">+</button>
+        </div>
+      </div>
+
+      <!-- Вкладка "Описание" и новые текстовые вкладки -->
+      <section class="tab-body active" id="tab-content">
+
+        <!-- Кнопки клиентской синхронизации папки документации -->
+        <div class="docs-actions edit-mode-only" style="margin:8px 0;">
+          <button id="pick-doc-folder" class="btn btn-folder" type="button">📂 Папка документации…</button>
+          <span id="doc-folder-status" class="doc-folder-status">Папка не выбрана</span>
+        </div>
+
+        <!-- Единый редактор текста для "Описание" и новых вкладок -->
+        <article id="tab-editor" class="prose" contenteditable="true"></article>
+      </section>
+
+      <!-- Вкладка "Документация" (ЕДИНСТВЕННАЯ) -->
+      <section class="tab-body" id="tab-docs">
+        <div class="docs-vertical">
+          <!-- Панель инструментов: поиск / сортировка / счётчик -->
+          <div class="docs-toolbar">
+            <div class="docs-modes">
+              <button type="button" class="docs-mode-btn active" data-mode="recent">Недавние</button>
+              <button type="button" class="docs-mode-btn" data-mode="all">Все</button>
+            </div>
+
+            <input id="docs-search-input" type="text" class="docs-search-input" placeholder="Поиск по имени..." />
+
+            <select id="docs-type-select" class="docs-sort-select">
+              <option value="all">Все типы</option>
+              <option value="pdf">PDF</option>
+              <option value="image">Изображения</option>
+              <option value="3d">3D (STL/STP)</option>
+              <option value="video">Видео</option>
+              <option value="other">Прочее</option>
+            </select>
+
+            <select id="docs-sort-select" class="docs-sort-select">
+              <option value="date-desc">Новые сверху</option>
+              <option value="date-asc">Старые сверху</option>
+              <option value="name-asc">По имени (А–Я)</option>
+              <option value="name-desc">По имени (Я–А)</option>
+              <option value="size-desc">По размеру (большие)</option>
+              <option value="size-asc">По размеру (маленькие)</option>
+            </select>
+
+            <span id="docs-counter" class="docs-counter">Файлов нет</span>
+          </div>
+
+
+          <!-- Две колонки: просмотр и управление -->
+          <div class="docs-columns">
+            <!-- Список файлов (просмотр) -->
+            <div class="docs-list">
+              <h3>Файлы</h3>
+              <ul id="docs-view" class="files-list"></ul>
+            </div>
+
+            <!-- Список файлов (редактирование) -->
+            <div class="docs-list edit-mode-only">
+              <h3>Управление файлами</h3>
+              <ul id="docs-edit-list" class="files-list"></ul>
+              <div class="upload-row">
+                <input id="docs-file-input" type="file" />
+                <button id="docs-btn-upload" class="btn">Загрузить</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Предпросмотр (всегда снизу) -->
+          <div class="docs-preview">
+            <div id="doc-preview" class="doc-preview hidden"></div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- CDN зависимости (подключаются один раз) -->
+<div id="ai-import-modal" class="ai-modal" hidden>
+  <div class="ai-modal__backdrop" data-ai-close></div>
+  <section class="ai-modal__panel" role="dialog" aria-modal="true" aria-labelledby="ai-import-title">
+    <header class="ai-modal__header">
+      <h2 id="ai-import-title">ИИ-сбор справочника</h2>
+      <button type="button" class="ai-modal__close" data-ai-close aria-label="Закрыть">×</button>
+    </header>
+    <div class="ai-modal__body">
+      <label class="ai-field">
+        <span>ZIP-архив документации</span>
+        <input id="ai-archive-input" type="file" accept=".zip,application/zip" />
+      </label>
+      <div class="ai-modal__actions">
+        <button id="ai-upload-btn" class="btn" type="button">Загрузить и проанализировать</button>
+        <button id="ai-apply-btn" class="btn" type="button" disabled>Применить к справочнику</button>
+        <button class="btn" type="button" data-ai-close>Закрыть</button>
+      </div>
+      <div id="ai-status" class="ai-status">Выберите ZIP-архив для анализа.</div>
+      <div class="ai-progress"><div id="ai-progress-bar"></div></div>
+      <div id="ai-preview" class="ai-preview" hidden>
+        <p class="ai-warning">Результат будет добавлен отдельной веткой “ИИ-собранный справочник” и не удалит текущие разделы.</p>
+        <div id="ai-preview-content"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptx-preview@1.4.0/dist/pptx-preview.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- ЛОКАЛЬНО: только JSZip (для просмотра ZIP) -->
+<script src="/static/js/vendor/jszip.min.js"></script>
+
+<!-- Наш STL-просмотрщик (без three.js) -->
+<script src="/static/js/stlViewer.js"></script>
+
+<!-- дальше твои модули -->
+<script src="/static/js/menuEditor.js" defer></script>
+<script src="/static/js/fileViewer.js" defer></script>
+<script src="/static/js/contentEditor.js" defer></script>
+<script src="/static/js/tabsEditor.js" defer></script>
+<script src="/static/js/tinyEditor.js" defer></script>
+<script src="/static/js/docFolderSync.js" defer></script>
+<script src="/static/js/aiImport.js" defer></script>
+
+<!-- Кнопка сохранения -->
+<button id="btn-save-content"
+        class="fab-save edit-mode-only"
+        title="Сохранить (Ctrl+S)"
+        aria-label="Сохранить">
+  💾
+</button>
+
+</body>
+</html>

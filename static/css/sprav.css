@@ -1,0 +1,1249 @@
+:root {
+  --main-color: #007378;
+  --bg-level-1: #f0f7f7;
+  --bg-level-2: #e5f1f1;
+  --bg-level-3: #deeeee;
+  --border-color: #a4d0d0;
+  --hover-bg: #d3ebeb;
+  --font: "Tahoma", sans-serif;
+}
+
+/* было height:100vh + overflow:hidden — из-за этого страница не скроллилась */
+html, body {
+  min-height: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font);
+}
+
+.layout#app { flex-direction: row !important; }
+/* было height: calc(100vh - 100px); — фиксированная высота обрезала контент
+   сделали min-height, чтобы страница могла расти и скроллиться */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 100px);
+  margin-top: 100px;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100px;
+  z-index: 1000;
+  background-color: transparent;
+  color: white;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.header-bg { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
+.header-content { position:relative; display:flex; align-items:center; height:100%; padding:0 24px; z-index:1; }
+.header-right { margin-left:auto; display:flex; align-items:center; gap:10px; }
+
+.logo-block { display:flex; align-items:center; }
+.logo { height:50px; margin-right:16px; filter:drop-shadow(0 0 2px rgba(0,0,0,.3)); }
+.project-info { display:flex; flex-direction:column; line-height:1.2; }
+.project-title { font-size:22px; font-weight:bold; color:white; text-shadow:0 1px 1px rgba(0,0,0,.3); }
+.project-subtitle { font-size:14px; color:#d1f6f6; }
+
+.sidebar {
+  width:320px;
+  background:linear-gradient(to bottom,#e9ffff,#f5fefe);
+  padding:24px 20px;
+  overflow-y:auto;
+  border-right:1px solid var(--border-color);
+  box-shadow:2px 0 6px rgba(0,0,0,.03);
+}
+
+.menu-search { margin-bottom:16px; display:flex; justify-content:center; }
+#menu-search-input {
+  width:85%; max-width:260px;
+  padding:8px 12px; font-size:14px;
+  border:1px solid var(--border-color); border-radius:6px;
+  outline:none; box-sizing:border-box;
+  transition: box-shadow 0.2s ease;
+}
+#menu-search-input:focus { border-color:var(--main-color); box-shadow:0 0 0 2px rgba(0,115,120,.15); }
+
+.accordion-menu ul { list-style:none; padding:0; margin:0; }
+.menu-item { margin-bottom:8px; position:relative; }
+.accordion-btn {
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; box-sizing:border-box;
+  background:var(--main-color); color:#fff;
+  border:none; border-radius:8px;
+  font-weight:600; font-size:15px;
+  padding:12px 18px 12px 20px;
+  cursor:pointer; transition:background .2s, transform .15s;
+}
+.accordion-btn:hover { background:#005f64; transform:scale(1.01); }
+.menu-item.open > .accordion-btn { background:#004d4f; border-bottom:1px dashed #66b2b2; margin-bottom:8px; }
+.accordion-btn::after { content:"►"; font-size:14px; margin-left:auto; transition:transform .2s; }
+.menu-item.open > .accordion-btn::after { content:"▼"; }
+
+.submenu {
+  display:none; margin-top:6px; margin-left:20px; padding-left:20px;
+  border-left:3px dashed var(--main-color);
+  background:var(--bg-level-1); border-radius:4px;
+}
+.menu-item.open > .submenu { display:block; }
+.menu-item > .submenu { border-left:2px dashed var(--border-color); background:var(--bg-level-1); padding:8px 0; }
+.menu-item .submenu .submenu { background:var(--bg-level-2); border-left-color:#88c4c4; }
+.menu-item .submenu .submenu .submenu { background:var(--bg-level-3); border-left-color:#66b2b2; }
+
+.submenu .menu-item::before {
+  content:""; position:absolute; top:0; left:-14px;
+  width:3px; height:100%; background:var(--main-color);
+}
+
+.submenu-item {
+  display:block;
+  padding:12px 18px; margin-bottom:8px;
+  background:#fff; color:#004d4f;
+  font-size:14px; border-radius:6px;
+  border-left:4px solid var(--main-color);
+  cursor:pointer; transition:background .2s, padding-left .2s;
+}
+.submenu-item:hover { background:var(--hover-bg); padding-left:24px; }
+.submenu-item.active {
+  background:#fff9ec;
+  border-left:4px solid #ff9800;
+  font-weight:bold; color:#000;
+}
+
+/* было overflow-y:auto — создавал вложенный скролл.
+   Дадим прокрутку странице, а не внутренним контейнерам */
+.content { flex:1; padding:10px; background:#fff; overflow: visible; }
+
+#content-pane {
+  font-family:var(--font);
+  padding:10px; background:var(--bg-level-1);
+  box-sizing:border-box; border-left:1px solid var(--border-color);
+  overflow: visible;
+  display:flex; flex-direction:column;
+}
+#content-pane h2 { font-size:24px; font-weight:bold; color:var(--main-color); margin:0 0 16px; }
+
+.view-mode .edit-mode-only { display: none !important; }
+
+/* плавающая панель для действий над видео в режиме редактирования */
+.video-toolbar.edit-mode-only {
+  position: absolute;
+  z-index: 2000;
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+.view-mode .video-toolbar { display: none !important; }
+
+/* Видео внутри описания */
+#desc-editable figure.video,
+.prose figure.video {
+  display: block;
+  margin: 12px 0 16px;
+}
+#desc-editable figure.video video,
+.prose figure.video video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+/* Внешние встраивания (YouTube/Vimeo) */
+#desc-editable .video-embed,
+.prose .video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0 16px;
+}
+#desc-editable .video-embed iframe,
+.prose .video-embed iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+/* Показываем только активное тело вкладки */
+.tab-body {
+  display: none;          /* скрыть из потока */
+  padding: 0;             /* не важно, но чтобы не было паразитных отступов */
+  margin: 0;
+}
+
+.tab-body.active {
+  display: block;         /* показываем только активную */
+}
+
+/* На всякий случай гасим превью, если оно помечено .hidden */
+.doc-preview.hidden {
+  display: none !important;
+}
+
+.doc-preview {
+  min-height: 360px;
+  overflow: auto;
+  background: #fff;
+}
+
+.doc-preview embed {
+  min-height: 76vh;
+}
+
+.viewer-state {
+  padding: 18px;
+  color: #315c5d;
+  background: #f8fbfb;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.viewer-hint {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #54686a;
+}
+
+.pdfjs-pages {
+  display: grid;
+  gap: 12px;
+  padding: 10px;
+}
+
+.pdfjs-pages canvas {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+}
+
+.docx-html {
+  padding: 18px;
+  max-width: 980px;
+  margin: 0 auto;
+  line-height: 1.55;
+  background: #fff;
+}
+
+.xlsx-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  background: #eef8f8;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.xlsx-tab {
+  border: 1px solid var(--border-color);
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.xlsx-tab.active {
+  background: var(--main-color);
+  color: #fff;
+  border-color: var(--main-color);
+}
+
+.xlsx-wrap {
+  overflow: auto;
+  padding: 8px;
+}
+
+.xlsx-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  background: #fff;
+  font-size: 13px;
+}
+
+.xlsx-table td,
+.xlsx-table th {
+  border: 1px solid #ccdede;
+  padding: 5px 8px;
+  vertical-align: top;
+  white-space: pre-wrap;
+}
+
+.text-inline-viewer {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  background: #111827;
+}
+
+.text-inline-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  background: #f8fbfb;
+  border-bottom: 1px solid var(--border-color);
+  color: #143536;
+}
+
+.text-inline-toolbar input[type="search"] {
+  flex: 1 1 220px;
+  min-width: 160px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.text-inline-toolbar button,
+.text-inline-toolbar a {
+  border: 1px solid var(--border-color);
+  background: #fff;
+  color: #143536;
+  border-radius: 4px;
+  padding: 5px 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.text-inline-meta {
+  padding: 6px 10px;
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  color: #54686a;
+  font-size: 12px;
+}
+
+.text-inline-content {
+  flex: 1 1 auto;
+  min-height: 62vh;
+  margin: 0;
+  padding: 14px;
+  overflow: auto;
+  color: #e5e7eb;
+  background: #111827;
+  font-family: Consolas, "Courier New", monospace;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.text-inline-content.is-nowrap {
+  white-space: pre;
+  word-break: normal;
+}
+
+.text-inline-content mark {
+  background: #ffe066;
+  color: #111827;
+  padding: 0 1px;
+}
+
+.text-inline-content mark.active {
+  background: #ff9f1c;
+}
+/* === Фиксация сайдбара и правильное сжатие контента на flex === */
+.layout {
+  display: flex;                 /* уже есть, дублируем для приоритета */
+  min-width: 0;                  /* подстраховка контейнера */
+}
+
+.sidebar {
+  flex: 0 0 320px;               /* не растёт и не сжимается, ровно 320px */
+  min-width: 320px;              /* жёсткий минимум — меню не «схлопнется» */
+}
+
+.content {
+  flex: 1 1 auto;                /* правая колонка эластичная */
+  min-width: 0;                  /* ВАЖНО: разрешаем сжатие содержимого */
+  overflow: visible;             /* как у вас и было */
+}
+
+/* длинные куски в описании не должны раздувать колонку */
+#desc-view {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+#desc-view img,
+#desc-view video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+#desc-view table {
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+pre, code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* выравниваем блок действий справа от заголовка */
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.content-header .content-actions {
+  margin-left: auto;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.ai-modal[hidden] {
+  display: none !important;
+}
+
+.ai-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+}
+
+.ai-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+}
+
+.ai-modal__panel {
+  position: relative;
+  width: min(860px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  margin: 24px auto;
+  overflow: auto;
+  background: #fff;
+  color: #143536;
+  border-radius: 8px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, .25);
+}
+
+.ai-modal__header,
+.ai-modal__body {
+  padding: 18px 22px;
+}
+
+.ai-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ai-modal__header h2 {
+  margin: 0;
+  color: var(--main-color);
+  font-size: 22px;
+}
+
+.ai-modal__close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #315c5d;
+}
+
+.ai-field {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.ai-field input {
+  padding: 9px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.ai-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.ai-status {
+  padding: 10px 12px;
+  background: #eef8f8;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.ai-status--error {
+  background: #fff0f0;
+  border-color: #e18c8c;
+  color: #8a1d1d;
+}
+
+.ai-progress {
+  height: 8px;
+  margin: 10px 0 16px;
+  background: #d8eeee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#ai-progress-bar {
+  width: 0;
+  height: 100%;
+  background: var(--main-color);
+  transition: width .2s ease;
+}
+
+.ai-preview {
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+}
+
+.ai-warning {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  background: #fff8e1;
+  border-left: 4px solid #ffb300;
+}
+
+.ai-preview__tree ul,
+.ai-preview__files ul {
+  margin-top: 8px;
+}
+
+.ai-preview__meta {
+  margin: 8px 0 12px;
+  color: #456;
+}
+
+.ai-status-details,
+.ai-preview__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 13px;
+}
+
+.ai-status-details {
+  margin: 8px 0 4px;
+  color: #315c5d;
+}
+
+.ai-debug-panel {
+  max-height: 260px;
+  overflow: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: #f8fbfb;
+  font-size: 13px;
+}
+
+/* основная кнопка экспорта */
+.main-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--main-color);
+  background: var(--main-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  transition: filter .15s ease, transform .1s ease, box-shadow .2s ease;
+}
+.main-button:hover    { filter: brightness(1.05); transform: translateY(-1px); }
+.main-button:active   { transform: translateY(0); }
+.main-button:focus-visible { outline: 2px solid var(--main-color); outline-offset: 2px; }
+
+/* иконка "zip/download" через встроенный SVG */
+.main-button .btn-ico {
+  inline-size: 18px;
+  block-size: 18px;
+  flex: 0 0 18px;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
+<path fill="black" d="M15 2H9v2h6V2ZM9 6h6V4H9v2Zm0 2h6V6H9v2Zm0 2h2V8H9v2Zm0 2h2v-2H9v2Zm0 2h2v-2H9v2Zm0 2h2v-2H9v2ZM7 2h2v2H7V2Zm0 4h2V4H7v2Zm0 4h2V8H7v2ZM5 2h2v2H5V2Zm0 4h2V4H5v2Zm0 4h2V8H5v2Zm8 10v-4h-2v4H8l4 4 4-4h-3Z"/>\
+</svg>') no-repeat center / contain;
+          mask: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
+<path fill="black" d="M15 2H9v2h6V2ZM9 6h6V4H9v2Zm0 2h6V6H9v2Zm0 2h2V8H9v2Zm0 2h2v-2H9v2Zm0 2h2v-2H9v2Zm0 2h2v-2H9v2ZM7 2h2v2H7V2Zm0 4h2V4H7v2Zm0 4h2V8H7v2ZM5 2h2v2H5V2Zm0 4h2V4H5v2Zm0 4h2V8H5v2Zm8 10v-4h-2v4H8l4 4 4-4h-3Z"/>\
+</svg>') no-repeat center / contain;
+}
+
+/* состояние загрузки */
+.main-button.is-loading {
+  pointer-events: none;
+  filter: grayscale(.2) brightness(.9);
+}
+.main-button.is-loading::after {
+  content: "";
+  inline-size: 16px;
+  block-size: 16px;
+  border: 2px solid rgba(255,255,255,.6);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin-left: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+/* --- Документация: панель поиска/сортировки и строки списка файлов --- */
+
+.docs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.docs-search-input {
+  flex: 1 1 220px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+.docs-sort-select {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: #fff;
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+.docs-counter {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Строки списка файлов: имя слева, дата/размер справа */
+
+.files-list .file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.file-main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.file-name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.file-date,
+.file-size {
+  white-space: nowrap;
+}
+
+.file-type-badge,
+.file-action-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #b8d8d8;
+  background: #eef8f8;
+  color: #245657;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.file-action-label {
+  background: #fff8e1;
+  border-color: #e8c56a;
+  color: #6a5200;
+}
+
+.file-meta .file-delete {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+/* --- Панель документов: режимы, типы, сортировка --- */
+
+.docs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.docs-modes {
+  display: flex;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.docs-mode-btn {
+  border: 1px solid var(--border-color, #ccc);
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.docs-mode-btn.active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.docs-search-input {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 6px;
+  font-family: var(--font, system-ui);
+  font-size: 14px;
+}
+
+.docs-sort-select {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 6px;
+  background: #fff;
+  font-family: var(--font, system-ui);
+  font-size: 14px;
+}
+
+.docs-counter {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Список файлов */
+
+.files-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.files-list .file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.files-list .file-item:hover {
+  background: #f3f5f9;
+}
+
+.files-list .file-item.active {
+  background: #e0f0ff;
+}
+
+.file-main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.file-name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.file-date,
+.file-size {
+  white-space: nowrap;
+}
+
+/* Кнопка удаления в списке документов (панель редактирования) */
+
+.file-meta .file-delete {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* --- Просмотр содержимого ZIP-архива --- */
+
+.archive-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #ddd);
+  background: #fff;
+  overflow: hidden;
+}
+
+.archive-header {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-color, #eee);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.archive-header-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.archive-header-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.archive-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.archive-file-list {
+  flex: 0 0 220px;
+  max-width: 260px;
+  border-right: 1px solid var(--border-color, #eee);
+  overflow-y: auto;
+}
+
+.archive-file-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-entry {
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.archive-entry span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.archive-entry small {
+  white-space: nowrap;
+  color: #888;
+}
+
+.archive-entry:hover {
+  background: #f3f5f9;
+}
+
+.archive-entry.active {
+  background: #e0f0ff;
+}
+
+.archive-preview {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 6px;
+  overflow: auto;
+}
+
+.archive-preview iframe,
+.archive-preview img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.archive-preview pre {
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.text-viewer[hidden] {
+  display: none !important;
+}
+
+.text-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 3200;
+}
+
+.text-viewer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+}
+
+.text-viewer__panel {
+  position: relative;
+  width: min(1100px, calc(100vw - 32px));
+  height: min(86vh, 860px);
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #142f30;
+  border-radius: 8px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, .25);
+  overflow: hidden;
+}
+
+.text-viewer__header,
+.text-viewer__toolbar,
+.text-viewer__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.text-viewer__header h3 {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--main-color);
+}
+
+.text-viewer__close {
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.text-viewer__toolbar {
+  flex-wrap: wrap;
+  background: #f8fbfb;
+}
+
+.text-viewer__toolbar input[type="search"] {
+  flex: 1 1 220px;
+  min-width: 140px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.text-viewer__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  background: #111827;
+}
+
+.text-viewer__content {
+  min-height: 100%;
+  margin: 0;
+  padding: 14px;
+  color: #e5e7eb;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre;
+  word-break: normal;
+}
+
+.text-viewer__content.is-wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.text-viewer__content mark {
+  background: #ffe066;
+  color: #111827;
+  padding: 0 1px;
+}
+
+.text-viewer__content mark.active {
+  background: #ff9f1c;
+}
+
+.text-viewer__meta {
+  font-size: 12px;
+  color: #54686a;
+  background: #fff;
+}
+/* Панель документов: режимы, поиск, тип, сортировка */
+
+.docs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.docs-modes {
+  display: flex;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.docs-mode-btn {
+  border: 1px solid var(--border-color, #ccc);
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.docs-mode-btn.active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.docs-search-input {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 6px;
+  font-family: var(--font, system-ui);
+  font-size: 14px;
+}
+
+.docs-sort-select {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 6px;
+  background: #fff;
+  font-family: var(--font, system-ui);
+  font-size: 14px;
+}
+
+.docs-counter {
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Строки списка файлов */
+
+.files-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.files-list .file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.files-list .file-item:hover {
+  background: #f3f5f9;
+}
+
+.files-list .file-item.active {
+  background: #e0f0ff;
+}
+
+.file-main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.file-name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-meta {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.file-date,
+.file-size {
+  white-space: nowrap;
+}
+
+.file-meta .file-delete {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Просмотр содержимого ZIP-архива */
+
+.archive-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #ddd);
+  background: #fff;
+  overflow: hidden;
+}
+
+.archive-header {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border-color, #eee);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.archive-header-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.archive-header-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.archive-body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.archive-file-list {
+  flex: 0 0 220px;
+  max-width: 260px;
+  border-right: 1px solid var(--border-color, #eee);
+  overflow-y: auto;
+}
+
+.archive-file-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-entry {
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.archive-entry span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.archive-entry small {
+  white-space: nowrap;
+  color: #888;
+}
+
+.archive-entry:hover {
+  background: #f3f5f9;
+}
+
+.archive-entry.active {
+  background: #e0f0ff;
+}
+
+.archive-preview {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 6px;
+  overflow: auto;
+}
+
+.archive-preview iframe,
+.archive-preview img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.archive-preview pre {
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

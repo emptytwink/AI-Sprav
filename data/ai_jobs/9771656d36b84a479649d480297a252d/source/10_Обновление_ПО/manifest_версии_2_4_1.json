@@ -1,0 +1,25 @@
+{
+  "product": "Автоматизированный комплекс КСД-01 «Вектор»",
+  "version": "2.4.1",
+  "build": "2026.05.12.1840",
+  "components": [
+    {
+      "name": "web-ui",
+      "version": "2.4.1"
+    },
+    {
+      "name": "api-gateway",
+      "version": "2.4.1"
+    },
+    {
+      "name": "agent",
+      "version": "1.9.7"
+    },
+    {
+      "name": "db-migrations",
+      "version": "2026.05.12"
+    }
+  ],
+  "requires_backup": true,
+  "rollback_supported": true
+}

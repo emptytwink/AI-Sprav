@@ -1,0 +1,405 @@
+/* static/css/menu_like_sprav.css
+   Стиль только для меню: .accordion-menu, .menu, .menu-item, .accordion-btn, .submenu, .submenu-item
+   Подключать ПОСЛЕ sprav.css
+*/
+
+/* Базовая структура списков */
+.accordion-menu ul.menu,
+.accordion-menu ul.submenu {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Элемент дерева */
+.menu-item {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+/* Кнопка секции (группа) */
+.accordion-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+
+  padding: 12px 18px;
+  border-left: 3px solid var(--main-color);
+  padding-left: 20px;
+
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+  margin-bottom: 0; /* без зазора перед подсписком */
+}
+
+/* Ховеры и активное состояние секции */
+.accordion-btn:hover { background-color: #005f64; transform: scale(1.01); }
+.menu-item.open > .accordion-btn { background-color: #004d4f; border-bottom: 1px dashed #66b2b2; margin-bottom: 8px; }
+
+/* Стрелочка у секции */
+.accordion-btn::after {
+  content: "►";
+  font-size: 14px;
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+.menu-item.open > .accordion-btn::after { content: "▼"; }
+
+/* Подсписок (по умолчанию скрыт, показывается только когда .menu-item.open) */
+.submenu {
+  display: none;
+  margin-top: 6px;
+
+  /* базовая линия слева и подложка 1-го уровня */
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 3px dashed var(--main-color);
+  background-color: var(--bg-level-1);
+  border-radius: 4px;
+}
+
+/* Раскрытая группа показывает подсписок */
+.menu-item.open > .submenu { display: block; }
+
+/* Углубляющиеся уровни — более светлая подложка и линия */
+.menu-item > .submenu { border-left: 2px dashed var(--border-color); background-color: var(--bg-level-1); padding-top: 8px; padding-bottom: 8px; }
+.menu-item .submenu .submenu { background-color: var(--bg-level-2); border-left-color: #88c4c4; }
+.menu-item .submenu .submenu .submenu { background-color: var(--bg-level-3); border-left-color: #66b2b2; }
+
+/* Отступы для уровней (визуальная иерархия) */
+.accordion-menu > .menu > .menu-item > .submenu { margin-left: 10px; padding-left: 12px; }
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu { margin-left: 20px; padding-left: 12px; }
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu > .menu-item > .submenu { margin-left: 30px; padding-left: 12px; }
+
+/* Лист (обычный пункт) */
+.submenu-item {
+  display: block;
+  background-color: #fff;
+  color: #004d4f;
+  font-size: 14px;
+
+  padding: 12px 18px;
+  border-radius: 6px;
+
+  /* тот же левый акцент, что и у кнопки секции */
+  border-left: 4px solid var(--main-color);
+  transition: background 0.2s ease, padding-left 0.2s ease;
+  cursor: pointer;
+
+  /* одинаковые отступы с секциями */
+  margin-bottom: 8px;
+}
+
+/* Hover/Active для листа */
+.submenu-item:hover { background-color: var(--hover-bg); padding-left: 24px; }
+.submenu-item.active {
+  background-color: #fff9ec;
+  border-left: 4px solid #ff9800;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Вспомогательные «направляющие» внутри вложенных пунктов */
+.submenu .menu-item::before {
+  /* подчёркиваем вертикальную «ось» для вложенных элементов тем же фирменным цветом */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -14px;
+  width: 3px;
+  height: 100%;
+  background-color: var(--main-color);
+}
+
+/* Подсветка выбранного пункта редактором (если используешь .selected) */
+.menu-item.selected > .submenu-item,
+.menu-item.selected > .menu-row { /* menu-row — если используешь редакторскую «строку» */
+  outline: 2px solid #ffb300;
+  background: #fff8e1;
+}
+
+/* Мини-фикс: визуальное выравнивание основного раздела (если есть «Главная») */
+.glav-btn {
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.glav-btn:hover { background-color: #005f64; transform: scale(1.01); }
+/* Просмотр/редактирование через класс на body */
+body.view-mode .menu-row { border-color: transparent; padding: 0; background: transparent; }
+body.view-mode .menu-item.selected > .menu-row { outline: none; background: transparent; }
+
+/* Выделение только текста пункта в просмотре — используем твоё правило из sprav.css */
+body.view-mode .submenu-item.active {
+  background-color: var(--hover-bg);
+  border-left: 4px solid #ff9800;
+  font-weight: bold;
+  color: #000;
+}
+
+/* В редактировании чуть подсветим строку, но без толстой рамки */
+body.edit-mode .menu-item.selected > .menu-row {
+  outline: none;
+  background: #fff6d6;
+  box-shadow: inset 0 0 0 2px rgba(255,179,0,.35);
+}
+
+/* Сделаем кликабельной только «текстовую» часть, чтобы не казалось, что область огромная */
+.menu-row { padding: 4px 6px; }
+.menu-row > .submenu-item,
+.menu-row > .accordion-btn { flex: 1; }
+/* ===== Индикатор у аккордеона: стрелка и «сигнальная полоса» ===== */
+.accordion-btn {
+  position: relative;
+  padding-right: 32px; /* место под стрелку */
+}
+
+/* стрелка: закрыто — вправо, открыто — вниз */
+.accordion-btn::after {
+  content: "►";
+  font-size: 14px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .9;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.menu-item.open > .accordion-btn::after {
+  content: "▼";
+  opacity: 1;
+}
+
+/* дополнительный индикатор открытой группы — тонкая слева полоса */
+.menu-item.open > .accordion-btn {
+  box-shadow: inset 4px 0 0 0 rgba(255, 200, 0, .9);
+}
+
+/* ===== «Компактное» выделение выбранного пункта в просмотре ===== */
+body.view-mode .menu-item.selected > .menu-row {
+  background: transparent;
+  outline: none;
+}
+body.view-mode .submenu-item.active {
+  background-color: var(--hover-bg);
+  border-left: 4px solid #ff9800;
+  font-weight: bold;
+  color: #000;
+}
+
+/* ===== Переключатель on/off со слайдером ===== */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 30px;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute; inset: 0;
+  background: #cfd8dc;
+  border-radius: 999px;
+  transition: background .2s;
+}
+.slider::before {
+  content: "";
+  position: absolute; left: 4px; top: 4px;
+  width: 22px; height: 22px;
+  background: #fff; border-radius: 50%;
+  transition: transform .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.switch input:checked + .slider {
+  background: #26a69a;
+}
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/*подпись рядом со свитчем*/
+.edit-toggle-label {
+  margin-left: 8px; font-size: 14px; color: #123;
+}
+
+/* В режиме редактирования мягко подсветим выбранную строку */
+body.edit-mode .menu-item.selected > .menu-row {
+  outline: none;
+  background: #fff6d6;
+  box-shadow: inset 0 0 0 2px rgba(255,179,0,.35);
+}
+/* --- FIX: стрелка у аккордеона и индикатор открытой группы --- */
+
+/* сама кнопка: даём место под стрелку */
+.accordion-btn {
+  position: relative;
+  padding-right: 32px; /* место под стрелку справа */
+}
+
+/* базовая стрелка (закрыто) — вправо */
+.accordion-btn::after {
+  content: "►";
+  font-size: 14px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .9;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* ВНИМАНИЕ: .accordion-btn находится ВНУТРИ .menu-row, поэтому нужен потомок, а не прямой ребёнок */
+.menu-item.open .accordion-btn::after {
+  content: "▼"; /* открыто — вниз */
+  opacity: 1;
+}
+/* Базовая стрелка — закрыто (вправо) */
+.menu-row > .accordion-btn {
+  position: relative;
+  padding-right: 32px; /* место под стрелку */
+}
+.menu-row > .accordion-btn::after {
+  content: "►";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .9;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* Открыто — вниз: строго по собственному состоянию кнопки */
+.menu-row > .accordion-btn[aria-expanded="true"]::after {
+  content: "▼";
+  opacity: 1;
+}
+
+/* Базовая стрелка: закрыто — вправо */
+.accordion-menu .menu-item > .menu-row > .accordion-btn {
+  position: relative;
+  padding-right: 32px;
+}
+.accordion-menu .menu-item > .menu-row > .accordion-btn::after {
+  content: "►";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .9;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* Открыто — вниз: строго по своему состоянию кнопки */
+.accordion-menu .menu-item > .menu-row > .accordion-btn[aria-expanded="true"]::after {
+  content: "▼";
+  opacity: 1;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* логотип слева, переключатель справа */
+  height: 100%;
+  padding: 0 24px;
+  z-index: 1;
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Визуальные уровни вложенности меню */
+.menu-item.level-1 > .menu-row > .accordion-btn,
+.menu-item.level-1 > .submenu-item {
+  border-left: 4px solid #007378;
+}
+
+.menu-item.level-2 > .menu-row > .accordion-btn,
+.menu-item.level-2 > .submenu-item {
+  border-left: 4px solid #009688;
+}
+
+.menu-item.level-3 > .menu-row > .accordion-btn,
+.menu-item.level-3 > .submenu-item {
+  border-left: 4px solid #26a69a;
+}
+
+.menu-item.level-4 > .menu-row > .accordion-btn,
+.menu-item.level-4 > .submenu-item {
+  border-left: 4px solid #4db6ac;
+}
+
+/* Чуть более явный шаг вложенности */
+.accordion-menu > .menu > .menu-item > .submenu {
+  margin-left: 14px;
+  padding-left: 16px;
+}
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu {
+  margin-left: 20px;
+  padding-left: 16px;
+}
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu > .menu-item > .submenu {
+  margin-left: 26px;
+  padding-left: 16px;
+}
+
+/* Явные отступы строк по уровню вложенности */
+.menu-item.level-1 > .menu-row {
+  margin-left: 0;
+}
+
+.menu-item.level-2 > .menu-row {
+  margin-left: 12px;
+}
+
+.menu-item.level-3 > .menu-row {
+  margin-left: 24px;
+}
+
+.menu-item.level-4 > .menu-row {
+  margin-left: 36px;
+}
+
+.menu-item.level-5 > .menu-row {
+  margin-left: 48px;
+}
+
+.menu-item.level-6 > .menu-row {
+  margin-left: 60px;
+}
+/* 2. Упрощаем border-left у подменю, чтобы линии не множились к глубине */
+
+/* Первый уровень внутри верхнего menu-item — пусть остаётся тонкая "ось" */
+.accordion-menu > .menu > .menu-item > .submenu {
+  border-left: 2px dashed var(--border-color);
+}
+
+/* Все более глубокие уровни — БЕЗ доп. линий, только отступы и фон */
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu,
+.accordion-menu > .menu > .menu-item > .submenu > .menu-item > .submenu > .menu-item > .submenu,
+.accordion-menu .submenu .submenu .submenu {
+  border-left: none !important;
+}
+/* 1. Убираем "ёлку" из псевдоэлементов на всех вложенных пунктах */
+.submenu .menu-item::before {
+  content: none !important;
+}

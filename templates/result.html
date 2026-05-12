@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр чертежа</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+<header class="top-bar">
+    <button class="back-button" onclick="history.back()">Назад</button>
+    <div class="titles">
+        <div class="project-name">Проект: <span id="project-name"></span></div>
+        <div class="drawing-title" id="drawing-title"></div>
+    </div>
+</header>
+
+<div class="layout">
+    <div id="map" class="map"></div>
+
+    <!-- Кнопка сворачивания панели -->
+    <button id="panel-toggle-btn" class="panel-toggle-btn" type="button" title="Свернуть/развернуть панель">
+        ‹
+    </button>
+
+    <aside class="side-panel">
+    <section class="panel-block panel-radius">
+      <div class="panel-block-header">
+        <h3>Радиус кругов</h3>
+        <span class="radius-chip">
+          <span id="radius-value">—</span> px
+        </span>
+      </div>
+
+      <div class="radius-input-row">
+        <input id="radius-input" type="range" min="1" max="120" step="1" value="19">
+        <input id="radius-number" type="number" min="1" max="120" value="19" class="radius-number">
+      </div>
+
+      <div class="radius-buttons">
+        <button id="set-radius-all-btn" class="secondary-btn">
+          Задать радиус всем кругам
+        </button>
+      </div>
+    </section>
+
+
+    <section class="panel-block panel-visibility">
+      <h3>Отображение кругов</h3>
+      <label class="checkbox-row">
+        <input type="checkbox" id="show-with-files" checked>
+        <span class="checkbox-label">
+          <span class="checkbox-switch"></span>
+          <span class="checkbox-text">С файлами</span>
+        </span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" id="show-empty" checked>
+        <span class="checkbox-label">
+          <span class="checkbox-switch"></span>
+          <span class="checkbox-text">Без файлов</span>
+        </span>
+      </label>
+    </section>
+
+    </aside>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+</body>
+</html>

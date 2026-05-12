@@ -1,0 +1,10 @@
+{
+  "job_id": "0aaa1c124ff043eeaa81253defa61606",
+  "status": "failed",
+  "message": "Не удалось подключиться к Ollama. Проверьте, что Ollama запущена и доступна по адресу OLLAMA_BASE_URL.",
+  "progress": 100,
+  "error": "Не удалось подключиться к Ollama. Проверьте, что Ollama запущена и доступна по адресу OLLAMA_BASE_URL.",
+  "archive_name": "demo_ai_sprav_docs.zip",
+  "created_at": "2026-05-12T10:38:21",
+  "finished_at": "2026-05-12T10:41:21"
+}

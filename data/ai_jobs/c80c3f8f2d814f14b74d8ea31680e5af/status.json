@@ -1,0 +1,20 @@
+{
+  "job_id": "c80c3f8f2d814f14b74d8ea31680e5af",
+  "status": "ready",
+  "message": "Предложенная структура готова к просмотру.",
+  "progress": 100,
+  "error": null,
+  "archive_name": "super_ai_sprav_docs.zip",
+  "created_at": "2026-05-12T12:25:07",
+  "finished_at": "2026-05-12T12:25:36",
+  "ollama_base_url": "http://192.168.6.39:11434",
+  "ollama_model": "qwen3:8b",
+  "max_docs": 50,
+  "max_chars_per_doc": 4000,
+  "num_predict": 8192,
+  "total_files_in_archive": 68,
+  "total_supported_candidates": 63,
+  "selected_documents_count": 50,
+  "skipped_files_count": 18,
+  "attached_files_count": null
+}

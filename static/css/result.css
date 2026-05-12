@@ -1,0 +1,362 @@
+/* static/css/result.css */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background-color: #f5f6f7;
+    color: #222;
+}
+
+/* Верхняя панель */
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background-color: #009090;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    border: none;
+    background: #ffffff22;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 16px;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    background: #ffffff44;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.project-name {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.drawing-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Основной layout: карта + панель справа */
+
+.layout {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+}
+
+/* Карта */
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Панель справа */
+
+.side-panel {
+    background: #ffffff;
+    border-left: 1px solid #dde1e4;
+    padding: 12px 12px 16px;
+    overflow-y: auto;
+    transition: width 0.25s ease, padding 0.25s ease, opacity 0.25s ease;
+}
+
+/* Блоки панели */
+
+.panel-block {
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: #f7f9fb;
+    margin-bottom: 12px;
+}
+
+.panel-block h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Радиус */
+
+.panel-radius .panel-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.radius-chip {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background-color: #e0f5f5;
+    color: #005858;
+}
+
+#radius-input {
+    width: 100%;
+    margin: 4px 0 6px;
+}
+
+.radius-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Кнопки */
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: #009090;
+    color: #fff;
+}
+
+.primary-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.secondary-btn {
+    background-color: #e0e7ec;
+    color: #333;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: #007676;
+}
+
+.secondary-btn:hover {
+    background-color: #d0dde6;
+}
+
+/* Фильтр кругов */
+
+.panel-visibility {
+    margin-top: 4px;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+/* скрываем стандартный чекбокс, оставляем доступным для клика */
+.checkbox-row input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* область-обёртка для кастомного переключателя */
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-switch {
+    width: 32px;
+    height: 18px;
+    border-radius: 999px;
+    background: #d0dde6;
+    position: relative;
+    transition: background 0.2s ease;
+}
+
+.checkbox-switch::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.checkbox-row input[type="checkbox"]:checked + .checkbox-label .checkbox-switch {
+    background: #009090;
+}
+
+.checkbox-row input[type="checkbox"]:checked + .checkbox-label .checkbox-switch::before {
+    transform: translateX(14px);
+}
+
+.checkbox-text {
+    white-space: nowrap;
+}
+
+/* Легенда */
+
+.legend {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #555;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.legend-dot.with-files {
+    background-color: #009688;
+}
+
+.legend-dot.empty {
+    border: 2px dashed #ff9800;
+}
+
+/* Стили кругов на карте */
+
+.leaflet-interactive.circle-with-files {
+    stroke: #009688;
+    fill: rgba(0, 150, 136, 0.35);
+}
+
+.leaflet-interactive.circle-empty {
+    stroke: #ff9800;
+    stroke-dasharray: 5 4;
+    fill: rgba(255, 152, 0, 0.12);
+}
+
+/* Кнопка сворачивания панели */
+
+.panel-toggle-btn {
+    position: absolute;
+    top: 12px;
+    right: 320px;
+    z-index: 900;
+    width: 24px;
+    height: 48px;
+    border-radius: 24px 0 0 24px;
+    border: 1px solid #c5ced6;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #007676;
+    padding: 0;
+}
+
+.panel-toggle-btn:hover {
+    background: #f2f6f9;
+}
+
+/* Состояние свернутой панели */
+
+body.panel-collapsed .layout {
+    grid-template-columns: minmax(0, 1fr) 0px;
+}
+
+body.panel-collapsed .side-panel {
+    width: 0;
+    padding: 0;
+    border-left: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.panel-collapsed .panel-toggle-btn {
+    right: 8px;
+    border-radius: 0 24px 24px 0;
+    transform: rotate(180deg);
+}
+
+/* Адаптив */
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: 1fr auto;
+    }
+
+    .side-panel {
+        border-left: none;
+        border-top: 1px solid #dde1e4;
+        height: 220px;
+    }
+
+    .panel-toggle-btn {
+        top: 8px;
+        right: 8px;
+        border-radius: 24px;
+        height: 36px;
+        width: 36px;
+    }
+
+    body.panel-collapsed .layout {
+        grid-template-rows: 1fr 0;
+    }
+
+    body.panel-collapsed .side-panel {
+        height: 0;
+    }
+}
+
+.radius-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radius-input-row #radius-input {
+    flex: 1 1 auto;
+}
+
+.radius-number {
+    width: 64px;
+    padding: 4px 6px;
+    font-size: 13px;
+}

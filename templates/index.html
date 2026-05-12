@@ -1,0 +1,54 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея чертежей</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body class="drawings-body">
+<header class="drawings-header">
+    <div class="drawings-header-left">
+        <h1 class="drawings-title">Чертежи</h1>
+    </div>
+</header>
+
+<main class="drawings-main">
+    <section class="drawings-toolbar">
+        <div class="search-wrapper">
+            <input id="searchInput"
+                   type="text"
+                   placeholder="Поиск по названию чертежа...">
+        </div>
+
+        <!-- Форма добавления нового чертежа -->
+        <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
+            <label class="upload-button">
+                <span>+ Добавить чертёж</span>
+                <input id="uploadInput"
+                       type="file"
+                       name="file"
+                       accept="image/*,.ppt,.pptx"
+                       hidden>
+            </label>
+        </form>
+    </section>
+
+    <!-- сюда JS отрисует карточки -->
+    <section id="drawingsList" class="drawings-grid"></section>
+</main>
+
+
+<script>
+    // пробрасываем project в JS
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const project = params.get("project") || "";
+      const span = document.getElementById("project-name");
+      if (span) span.textContent = project;
+    })();
+</script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
