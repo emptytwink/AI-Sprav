@@ -25,7 +25,8 @@
         <!-- Форма добавления нового чертежа -->
         <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
             <label class="upload-button">
-                <span>+ Добавить чертёж</span>
+                <span class="upload-button__icon" aria-hidden="true"></span>
+                <span>Добавить чертёж</span>
                 <input id="uploadInput"
                        type="file"
                        name="file"
@@ -35,13 +36,12 @@
         </form>
     </section>
 
-    <!-- сюда JS отрисует карточки -->
+    <!-- Сюда JS отрисует карточки -->
     <section id="drawingsList" class="drawings-grid"></section>
 </main>
 
-
 <script>
-    // пробрасываем project в JS
+    // Пробрасываем project в JS.
     (function() {
       const params = new URLSearchParams(window.location.search);
       const project = params.get("project") || "";

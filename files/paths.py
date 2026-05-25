@@ -11,7 +11,7 @@ else:                                                      # ← запуск и
     BUNDLE_DIR  = Path(__file__).resolve().parents[1]
     RUNTIME_DIR = BUNDLE_DIR
 
-# ✅ Совместимость со старым кодом (export.py ждёт BASE_DIR)
+# Совместимость со старым кодом (export.py ждёт BASE_DIR)
 BASE_DIR = RUNTIME_DIR
 
 # Папка данных (записываемая). Можно переопределить через SPRAV_DATA_DIR

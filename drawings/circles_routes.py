@@ -16,6 +16,7 @@ from services.doc_convert import (
 from .drawings_repo import (
     get_drawing,
     set_circle_radius_for_all,
+    add_circle,
     update_circle,
     delete_circle,
     set_circle_files,
@@ -184,11 +185,11 @@ def register_circle_routes(app):
 
     @app.route("/update_circle/<drawing_id>/<circle_id>", methods=["POST"])
     def update_circle_route(drawing_id, circle_id):
-        project = request.form.get("project")
+        payload = request.get_json(silent=True) or {}
+        project = request.form.get("project") or payload.get("project")
         if not project:
             return jsonify({"error": "project не указан"}), 400
 
-        payload = request.get_json() or {}
         x = payload.get("x")
         y = payload.get("y")
         radius = payload.get("radius")
@@ -201,6 +202,47 @@ def register_circle_routes(app):
             return jsonify({"error": "Некорректные координаты или радиус"}), 400
 
         update_circle(
+            drawing_id,
+            circle_id,
+            x=x_f,
+            y=y_f,
+            radius=r_f,
+        )
+        return jsonify({"success": True}), 200
+
+    @app.route("/add_circle/<drawing_id>", methods=["POST"])
+    def add_circle_route(drawing_id):
+        payload = request.get_json() or {}
+        project = payload.get("project")
+        circle_id = str(payload.get("circle_id") or "").strip()
+        x = payload.get("x")
+        y = payload.get("y")
+        radius = payload.get("radius")
+
+        if not project:
+            return jsonify({"error": "project не указан"}), 400
+        if not circle_id:
+            return jsonify({"error": "circle_id не указан"}), 400
+
+        try:
+            x_f = float(x)
+            y_f = float(y)
+            r_f = float(radius)
+        except (TypeError, ValueError):
+            return jsonify({"error": "Некорректные координаты или радиус"}), 400
+
+        if r_f <= 0:
+            return jsonify({"error": "Радиус должен быть больше 0"}), 400
+
+        dto = get_drawing(drawing_id, project)
+        if not dto:
+            return jsonify({"error": "Чертёж не найден"}), 404
+
+        exists = any(str(c.get("circle_key")) == circle_id for c in dto["circles"])
+        if exists:
+            return jsonify({"error": f"Круг {circle_id} уже существует"}), 409
+
+        add_circle(
             drawing_id,
             circle_id,
             x=x_f,

@@ -10,6 +10,38 @@ from main.config import Config
 from .drawings_repo import save_drawing_with_circles
 
 
+def _read_image_unicode_safe(image_path: str) -> np.ndarray | None:
+    """
+    Unicode-safe чтение изображения для Windows.
+    cv2.imread может падать на путях с кириллицей.
+    """
+    try:
+        data = np.fromfile(image_path, dtype=np.uint8)
+    except OSError:
+        return None
+
+    if data.size == 0:
+        return None
+
+    return cv2.imdecode(data, cv2.IMREAD_COLOR)
+
+
+def _write_image_unicode_safe(image_path: Path, image: np.ndarray) -> bool:
+    """
+    Unicode-safe запись изображения для Windows.
+    """
+    suffix = image_path.suffix.lower() or ".png"
+    ext = ".jpg" if suffix in (".jpg", ".jpeg") else ".png"
+    ok, encoded = cv2.imencode(ext, image)
+    if not ok:
+        return False
+    try:
+        encoded.tofile(str(image_path))
+    except OSError:
+        return False
+    return True
+
+
 def detect_circles(image_path: str, drawing_id: str, project: str) -> dict:
     """
     Обнаруживает круги на ОРИГИНАЛЬНОМ изображении (без ресайза),
@@ -22,7 +54,7 @@ def detect_circles(image_path: str, drawing_id: str, project: str) -> dict:
     """
     print(f"[detect_circles] image: {image_path}")
 
-    img = cv2.imread(image_path, cv2.IMREAD_COLOR)
+    img = _read_image_unicode_safe(image_path)
     if img is None:
         raise RuntimeError(f"Не удалось прочитать изображение {image_path}")
 
@@ -77,7 +109,8 @@ def detect_circles(image_path: str, drawing_id: str, project: str) -> dict:
     detect_dir.mkdir(parents=True, exist_ok=True)
 
     processed_fs_path = detect_dir / f"detected_{drawing_id}.png"
-    cv2.imwrite(str(processed_fs_path), img)
+    if not _write_image_unicode_safe(processed_fs_path, img):
+        raise RuntimeError(f"Не удалось сохранить обработанное изображение {processed_fs_path}")
     processed_rel_url = f"/static/detectIMG/detected_{drawing_id}.png"
 
     image_abs = Path(image_path).resolve()

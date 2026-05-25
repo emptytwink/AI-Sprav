@@ -71,7 +71,7 @@
           <!-- кнопки вкладок генерируются скриптом -->
         </div>
         <div class="tabs-actions">
-          <button id="btn-add-tab" class="tab-btn edit-mode-only" title="Добавить вкладку">+</button>
+          <button id="btn-add-tab" class="tab-btn edit-mode-only" title="Добавить вкладку" aria-label="Добавить вкладку">+</button>
         </div>
       </div>
 
@@ -80,12 +80,16 @@
 
         <!-- Кнопки клиентской синхронизации папки документации -->
         <div class="docs-actions edit-mode-only" style="margin:8px 0;">
-          <button id="pick-doc-folder" class="btn btn-folder" type="button">📂 Папка документации…</button>
+          <button id="pick-doc-folder" class="btn btn-folder" type="button">
+            <span class="btn-icon btn-icon-folder" aria-hidden="true"></span>
+            <span>Папка документации...</span>
+          </button>
           <span id="doc-folder-status" class="doc-folder-status">Папка не выбрана</span>
         </div>
 
         <!-- Единый редактор текста для "Описание" и новых вкладок -->
         <article id="tab-editor" class="prose" contenteditable="true"></article>
+        <div id="drawings-gallery-pane" class="drawings-gallery-pane" hidden></div>
       </section>
 
       <!-- Вкладка "Документация" (ЕДИНСТВЕННАЯ) -->
@@ -104,8 +108,11 @@
               <option value="all">Все типы</option>
               <option value="pdf">PDF</option>
               <option value="image">Изображения</option>
+              <option value="excel">Таблицы</option>
+              <option value="text">Текст</option>
               <option value="3d">3D (STL/STP)</option>
               <option value="video">Видео</option>
+              <option value="archive">Архивы</option>
               <option value="other">Прочее</option>
             </select>
 
@@ -206,7 +213,7 @@
         class="fab-save edit-mode-only"
         title="Сохранить (Ctrl+S)"
         aria-label="Сохранить">
-  💾
+  <span class="fab-save__icon" aria-hidden="true"></span>
 </button>
 
 </body>

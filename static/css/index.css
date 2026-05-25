@@ -18,6 +18,10 @@ html, body {
   color: #222;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .drawings-body {
   display: flex;
   flex-direction: column;
@@ -84,6 +88,10 @@ html, body {
   align-items: center;
   margin-bottom: 12px;
   gap: 12px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
 }
 
 .search-wrapper {
@@ -93,10 +101,15 @@ html, body {
 #searchInput {
   width: 100%;
   max-width: 320px;
-  padding: 6px 10px;
-  border-radius: 6px;
+  min-height: 38px;
+  padding: 0 12px 0 34px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   background: #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23557173" d="M10.5 4a6.5 6.5 0 0 1 5.15 10.46l4.45 4.44-1.4 1.4-4.44-4.45A6.5 6.5 0 1 1 10.5 4Zm0 2a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: 10px 50%;
+  background-size: 16px;
 }
 
 #searchInput:focus {
@@ -110,6 +123,40 @@ html, body {
   color: #555;
 }
 
+.upload-form {
+  flex: 0 0 auto;
+}
+
+.upload-button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  background: var(--main-color);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter .15s ease, transform .1s ease;
+}
+
+.upload-button:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.upload-button__icon {
+  inline-size: 18px;
+  block-size: 18px;
+  flex: 0 0 18px;
+  background: currentColor;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z"/></svg>') no-repeat center / contain;
+          mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z"/></svg>') no-repeat center / contain;
+}
+
 /* --------- GRID --------- */
 
 .drawings-grid {
@@ -119,10 +166,22 @@ html, body {
   justify-content: flex-start; /* или center, если хочешь центрировать */
 }
 
+.drawings-empty {
+  grid-column: 1 / -1;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  color: #557173;
+  font-weight: 700;
+}
+
 
 .drawing-item {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
@@ -173,7 +232,7 @@ html, body {
 }
 .drawing-item {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   overflow: hidden;
   display: flex;
@@ -233,7 +292,7 @@ html, body {
 }
 
 .drawing-delete-btn {
-  border: none;
+  border: 1px solid #f0b7b7;
   border-radius: 6px;
   padding: 4px 8px;
   font-size: 11px;
@@ -244,4 +303,13 @@ html, body {
 
 .drawing-delete-btn:hover {
   background: #ffcccc;
+}
+
+.drawings-body.view-mode .upload-form,
+.drawings-body.view-mode .drawing-actions {
+  display: none !important;
+}
+
+.drawings-body.view-mode .drawing-name {
+  cursor: default;
 }

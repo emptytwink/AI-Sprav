@@ -1,8 +1,10 @@
 // static/js/tinyEditor.js
 (() => {
   const $ = (s, r=document) => r.querySelector(s);
-  const activeTabKey = () => document.querySelector('.tab-btn.active')?.dataset.key || 'desc';
-  const isDescOrExtra = () => (activeTabKey() !== 'docs');
+  const activeTab = () => document.querySelector('.tab-btn.active');
+  const activeTabKey = () => activeTab()?.dataset.key || 'desc';
+  const activeTabView = () => activeTab()?.dataset.view || activeTabKey();
+  const isDescOrExtra = () => !['docs', 'drawings'].includes(activeTabView());
   const isEditMode = () => document.getElementById('toggle-edit')?.checked === true;
   const getId = () => (window.getCurrentContentId?.()) || window.currentId || $('#content-pane')?.dataset.currentId || null;
   const debounce = (fn, ms=400) => { let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),ms); }; };
@@ -75,8 +77,8 @@
       branding: false,
       height: 680,
 
-      // ⬇️ добавили "image"
-      plugins: 'link image media table lists code paste',
+      // Добавили поддержку вставки изображений.
+      plugins: 'link image media table lists code',
 
       toolbar:
         'undo redo | blocks | bold italic underline | ' +
@@ -93,7 +95,7 @@
         'Roboto=Roboto,Arial,Helvetica,sans-serif;' +
         'Monospace=ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace',
 
-      // ⬇️ разрешаем ручной ресайз картинок
+      // Разрешаем ручной ресайз картинок.
       object_resizing: 'img,video,iframe',  // раньше было только 'video,iframe' :contentReference[oaicite:2]{index=2}
 
       // стиль внутри iframe редактора
@@ -213,8 +215,10 @@
     const html = (window.TinyEditor?.getHtml?.()) ||
                  document.getElementById('tab-editor')?.innerHTML || '';
 
-    // определить активную вкладку (desc или доп.вкладка) — у вас это уже есть в tinyEditor.js
-    const key = document.querySelector('.tab-btn.active')?.dataset.key || 'desc';
+    const active = document.querySelector('.tab-btn.active');
+    const key = active?.dataset.key || 'desc';
+    const view = active?.dataset.view || key;
+    if (view === 'docs' || view === 'drawings') return;
 
     try {
       if (key === 'desc') {

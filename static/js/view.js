@@ -1,14 +1,27 @@
-// static/js/view.js
-// Просмотр документов для выбранного круга на карте Leaflet
 (() => {
   let map = null;
   let currentProject = null;
   let currentDrawingId = null;
   let currentCircleId = null;
+  let isEditMode = true;
 
   function getQueryParam(name) {
     const params = new URLSearchParams(window.location.search);
     return params.get(name);
+  }
+
+  function setEmptyCanvasState(isEmpty) {
+    const hint = document.getElementById("map-empty-hint");
+    if (!hint) return;
+    hint.classList.toggle("hidden", !isEmpty);
+  }
+
+  function resetToEmptyCanvas() {
+    if (map) {
+      map.remove();
+      map = null;
+    }
+    setEmptyCanvasState(true);
   }
 
   function tryLoadImageSequentially(urls, onSuccess, onFail) {
@@ -38,10 +51,8 @@
   function initMapWithImage(imageUrl, img) {
     const width = img.naturalWidth || img.width;
     const height = img.naturalHeight || img.height;
-
     if (!width || !height) {
-      console.error("Не удалось определить размер изображения", imageUrl);
-      alert("Не удалось отобразить документ (нет размеров изображения)");
+      resetToEmptyCanvas();
       return;
     }
 
@@ -64,6 +75,43 @@
 
     L.imageOverlay(imageUrl, bounds).addTo(map);
     map.fitBounds(bounds);
+    setEmptyCanvasState(false);
+  }
+
+  function renderFilesList(filesForCircle) {
+    const filesListEl = document.getElementById("files-list");
+    if (!filesListEl) return;
+    filesListEl.innerHTML = "";
+
+    if (Array.isArray(filesForCircle) && filesForCircle.length > 0) {
+      filesForCircle.forEach((f) => {
+        const row = document.createElement("div");
+        row.className = "file-row";
+
+        const nameSpan = document.createElement("span");
+        nameSpan.className = "file-name";
+        nameSpan.textContent = f.name;
+
+        const sizeSpan = document.createElement("span");
+        sizeSpan.className = "file-size";
+        if (typeof f.size === "number") {
+          const kb = f.size / 1024;
+          sizeSpan.textContent = kb >= 1024 ? `${(kb / 1024).toFixed(1)} МБ` : `${kb.toFixed(1)} КБ`;
+        } else {
+          sizeSpan.textContent = "";
+        }
+
+        row.appendChild(nameSpan);
+        row.appendChild(sizeSpan);
+        filesListEl.appendChild(row);
+      });
+      return;
+    }
+
+    const empty = document.createElement("div");
+    empty.className = "file-empty";
+    empty.textContent = "К этому кругу ещё не прикреплены документы";
+    filesListEl.appendChild(empty);
   }
 
   async function loadDataAndInit() {
@@ -76,45 +124,13 @@
       return;
     }
 
-    // 1. JSON чертежа
-    const drawingUrl = `/load_drawing_by_project?project=${encodeURIComponent(
-      project
-    )}&drawing_id=${encodeURIComponent(drawingId)}`;
-    let drawingData;
-    try {
-      const resp = await fetch(drawingUrl);
-      if (!resp.ok) {
-        console.error(
-          "Ошибка load_drawing_by_project:",
-          resp.status,
-          await resp.text()
-        );
-        alert("Не удалось загрузить данные чертежа");
-        return;
-      }
-      drawingData = await resp.json();
-    } catch (e) {
-      console.error("Ошибка сети при load_drawing_by_project:", e);
-      alert("Ошибка связи с сервером (чертёж)");
-      return;
-    }
-
-    // 2. Файлы круга
     let filesMap = {};
     try {
       const resp = await fetch(
-        `/circle_files/${encodeURIComponent(drawingId)}?project=${encodeURIComponent(
-          project
-        )}`
+        `/circle_files/${encodeURIComponent(drawingId)}?project=${encodeURIComponent(project)}`
       );
       if (resp.ok) {
         filesMap = (await resp.json()) || {};
-      } else {
-        console.warn(
-          "circle_files ответил с ошибкой:",
-          resp.status,
-          await resp.text()
-        );
       }
     } catch (e) {
       console.error("Ошибка при запросе /circle_files:", e);
@@ -122,95 +138,36 @@
 
     const filesForCircle = filesMap[circleId] || [];
 
-    // 3. Обновляем заголовки / список файлов
     const circleLabel = document.getElementById("circle-label");
     const circleLabel2 = document.getElementById("circle-label-2");
-    const filesListEl = document.getElementById("files-list");
-
     if (circleLabel) circleLabel.textContent = circleId;
     if (circleLabel2) circleLabel2.textContent = circleId;
 
-    if (filesListEl) {
-      filesListEl.innerHTML = "";
+    renderFilesList(filesForCircle);
 
-      if (Array.isArray(filesForCircle) && filesForCircle.length > 0) {
-        filesForCircle.forEach((f) => {
-          const row = document.createElement("div");
-          row.className = "file-row";
-
-          const nameSpan = document.createElement("span");
-          nameSpan.className = "file-name";
-          nameSpan.textContent = f.name;
-
-          const sizeSpan = document.createElement("span");
-          sizeSpan.className = "file-size";
-          if (typeof f.size === "number") {
-            const kb = f.size / 1024;
-            sizeSpan.textContent =
-              kb >= 1024
-                ? `${(kb / 1024).toFixed(1)} МБ`
-                : `${kb.toFixed(1)} КБ`;
-          }
-
-          row.appendChild(nameSpan);
-          row.appendChild(sizeSpan);
-          filesListEl.appendChild(row);
-        });
-      } else {
-        const empty = document.createElement("div");
-        empty.className = "file-empty";
-        empty.textContent = "К этому кругу ещё не прикреплены документы";
-        filesListEl.appendChild(empty);
-      }
-    }
-
-    // 4. Выбираем, что показать на фоне
     const candidateUrls = [];
-
-    // 4.1. Сначала файлы круга
     if (Array.isArray(filesForCircle) && filesForCircle.length > 0) {
       const imageExts = ["png", "jpg", "jpeg", "gif", "webp", "svg"];
-
       for (let i = filesForCircle.length - 1; i >= 0; i--) {
         const f = filesForCircle[i];
         const name = String(f.name || "");
         const ext = name.split(".").pop().toLowerCase();
-
         if (imageExts.includes(ext) && f.url) {
-          candidateUrls.push(f.url); // <-- просто берём URL, который дал бэк
+          candidateUrls.push(f.url);
           break;
         }
       }
     }
 
-    // 4.2. Если подходящих файлов нет – фолбэк на сам чертёж
     if (candidateUrls.length === 0) {
-      if (drawingData.original_image) {
-        candidateUrls.push(drawingData.original_image);
-      } else if (drawingData.processed_image) {
-        candidateUrls.push(drawingData.processed_image);
-      }
-      if (drawingData.drawing_name) {
-        const rawUrl = `/static/${encodeURIComponent(
-          project
-        )}/state/drawings/${encodeURIComponent(drawingData.drawing_name)}`;
-        candidateUrls.push(rawUrl);
-      }
-    }
-
-    if (candidateUrls.length === 0) {
-      alert("Нет ни подходящих документов, ни изображения чертежа для отображения");
+      resetToEmptyCanvas();
       return;
     }
 
     tryLoadImageSequentially(
       candidateUrls,
-      (okUrl, img) => {
-        initMapWithImage(okUrl, img);
-      },
-      () => {
-        alert("Не удалось загрузить ни один из вариантов изображения");
-      }
+      (okUrl, img) => initMapWithImage(okUrl, img),
+      () => resetToEmptyCanvas()
     );
   }
 
@@ -222,7 +179,12 @@
     const formEl = document.getElementById("upload-form");
 
     if (uploadToggle && uploadPanel) {
+      if (!isEditMode) {
+        uploadToggle.classList.add("hidden");
+        uploadPanel.classList.add("hidden");
+      }
       uploadToggle.addEventListener("click", () => {
+        if (!isEditMode) return;
         uploadPanel.classList.toggle("hidden");
       });
     }
@@ -230,6 +192,7 @@
     if (!uploadInput || !uploadBtn || !formEl) return;
 
     uploadBtn.addEventListener("click", async () => {
+      if (!isEditMode) return;
       const files = uploadInput.files;
       if (!files || files.length === 0) {
         alert("Выберите хотя бы один файл");
@@ -246,18 +209,15 @@
           method: "POST",
           body: formData,
         });
-
         const data = await resp.json().catch(() => null);
-
         if (!resp.ok || !data || data.error) {
-          console.error("upload_documents error:", data);
           alert((data && data.error) || "Ошибка при загрузке файлов");
           return;
         }
 
-        alert("Файлы успешно загружены");
-        await loadDataAndInit();
         uploadInput.value = "";
+        uploadPanel.classList.add("hidden");
+        await loadDataAndInit();
       } catch (e) {
         console.error(e);
         alert("Ошибка связи с сервером при загрузке файлов");
@@ -269,17 +229,17 @@
     currentProject = getQueryParam("project") || "home";
     currentDrawingId = getQueryParam("drawing_id");
     currentCircleId = getQueryParam("circle_id");
+    isEditMode = getQueryParam("edit") === null ? true : getQueryParam("edit") === "1";
 
     const drawingInput = document.querySelector("input[name='drawing_id']");
     if (drawingInput) drawingInput.value = currentDrawingId || "";
-
     const circleInput = document.querySelector("input[name='circle_id']");
     if (circleInput) circleInput.value = currentCircleId || "";
-
     const projectInput = document.querySelector("input[name='project']");
     if (projectInput) projectInput.value = currentProject || "";
 
     initUploadPanel();
+    resetToEmptyCanvas();
     loadDataAndInit();
   });
 })();

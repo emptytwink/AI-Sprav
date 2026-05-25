@@ -20,51 +20,85 @@
 <div class="layout">
     <div id="map" class="map"></div>
 
-    <!-- Кнопка сворачивания панели -->
     <button id="panel-toggle-btn" class="panel-toggle-btn" type="button" title="Свернуть/развернуть панель">
         ‹
     </button>
 
     <aside class="side-panel">
-    <section class="panel-block panel-radius">
-      <div class="panel-block-header">
-        <h3>Радиус кругов</h3>
-        <span class="radius-chip">
-          <span id="radius-value">—</span> px
-        </span>
-      </div>
+        <section class="panel-block panel-actions">
+            <h3>Действия</h3>
+            <div class="action-buttons">
+                <button id="add-circle-btn" class="primary-btn" type="button">Добавить круг</button>
+                <button id="delete-circle-btn" class="danger-btn" type="button" disabled>Удалить круг</button>
+                <button id="open-circle-btn" class="secondary-btn" type="button" disabled>Открыть документы</button>
+            </div>
+            <div id="circle-action-status" class="action-status">Режим просмотра</div>
+        </section>
 
-      <div class="radius-input-row">
-        <input id="radius-input" type="range" min="1" max="120" step="1" value="19">
-        <input id="radius-number" type="number" min="1" max="120" value="19" class="radius-number">
-      </div>
+        <section class="panel-block panel-radius">
+            <div class="panel-block-header">
+                <h3>Радиус кругов</h3>
+                <span class="radius-chip">
+                    <span id="radius-value">—</span> px
+                </span>
+            </div>
 
-      <div class="radius-buttons">
-        <button id="set-radius-all-btn" class="secondary-btn">
-          Задать радиус всем кругам
-        </button>
-      </div>
-    </section>
+            <div class="radius-input-row">
+                <input id="radius-input" type="range" min="1" max="120" step="1" value="19">
+                <input id="radius-number" type="number" min="1" max="120" value="19" class="radius-number">
+            </div>
 
+            <div class="radius-buttons">
+                <button id="set-radius-selected-btn" class="secondary-btn" type="button" disabled>Применить к выбранному</button>
+                <button id="set-radius-all-btn" class="secondary-btn" type="button">Применить всем</button>
+            </div>
+        </section>
 
-    <section class="panel-block panel-visibility">
-      <h3>Отображение кругов</h3>
-      <label class="checkbox-row">
-        <input type="checkbox" id="show-with-files" checked>
-        <span class="checkbox-label">
-          <span class="checkbox-switch"></span>
-          <span class="checkbox-text">С файлами</span>
-        </span>
-      </label>
-      <label class="checkbox-row">
-        <input type="checkbox" id="show-empty" checked>
-        <span class="checkbox-label">
-          <span class="checkbox-switch"></span>
-          <span class="checkbox-text">Без файлов</span>
-        </span>
-      </label>
-    </section>
+        <section class="panel-block panel-visibility">
+            <div class="panel-block-header">
+                <h3>Отображение кругов</h3>
+                <button id="reset-filters-btn" class="secondary-btn compact-btn" type="button">Сброс</button>
+            </div>
+            <label class="checkbox-row">
+                <input type="checkbox" id="show-with-files" checked>
+                <span class="checkbox-label">
+                    <span class="checkbox-switch"></span>
+                    <span class="checkbox-text">С файлами</span>
+                </span>
+            </label>
+            <label class="checkbox-row">
+                <input type="checkbox" id="show-empty" checked>
+                <span class="checkbox-label">
+                    <span class="checkbox-switch"></span>
+                    <span class="checkbox-text">Без файлов</span>
+                </span>
+            </label>
 
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Всего</span>
+                    <strong id="stat-total">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">С файлами</span>
+                    <strong id="stat-with-files">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Без файлов</span>
+                    <strong id="stat-empty">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Показано</span>
+                    <strong id="stat-visible">0</strong>
+                </div>
+            </div>
+
+            <div class="legend">
+                <span class="legend-dot with-files"></span>С файлами
+                <span class="legend-gap"></span>
+                <span class="legend-dot empty"></span>Без файлов
+            </div>
+        </section>
     </aside>
 </div>
 

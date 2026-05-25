@@ -5,6 +5,7 @@
 
   const tabsRow = $("#tabs-row");
   const editorBox = $("#tab-editor");
+  const drawingsPane = $("#drawings-gallery-pane");
 
   let addBtn = $("#btn-add-tab");
   if (!addBtn && tabsRow) {
@@ -12,7 +13,9 @@
     addBtn.id = "btn-add-tab";
     addBtn.className = "tab-btn edit-mode-only";
     addBtn.type = "button";
-    addBtn.textContent = "+ Вкладка";
+    addBtn.textContent = "+";
+    addBtn.title = "Добавить вкладку";
+    addBtn.setAttribute("aria-label", "Добавить вкладку");
     tabsRow.appendChild(addBtn);
   }
 
@@ -38,6 +41,47 @@
     $$(".tab-actions").forEach(el => el.hidden = !isEdit());
   }
 
+  function getTabView(key) {
+    if (key === "desc" || key === "docs") return key;
+    const tab = (data?.extra_tabs || []).find(x => x.id === key);
+    if (!tab) return "html";
+    if (tab.view === "drawings" || /чертеж/i.test((tab.title || ""))) return "drawings";
+    return "html";
+  }
+
+  function ensureDrawingsFrame(project) {
+    if (!drawingsPane) return;
+
+    let frame = drawingsPane.querySelector("iframe");
+    const edit = isEdit() ? "1" : "0";
+    const src = `/drawings?project=${encodeURIComponent(project || "")}&edit=${edit}`;
+
+    if (!frame) {
+      frame = document.createElement("iframe");
+      frame.className = "drawings-gallery-frame";
+      frame.title = "Галерея чертежей";
+      frame.setAttribute("frameborder", "0");
+      drawingsPane.appendChild(frame);
+    }
+
+    if (frame.getAttribute("src") !== src) {
+      frame.setAttribute("src", src);
+    }
+  }
+
+  function hideDrawingsPane() {
+    if (drawingsPane) drawingsPane.hidden = true;
+    if (editorBox) editorBox.hidden = false;
+  }
+
+  function showDrawingsPane() {
+    if (editorBox) {
+      editorBox.hidden = true;
+      editorBox.removeAttribute("contenteditable");
+    }
+    if (drawingsPane) drawingsPane.hidden = false;
+  }
+
   function setActive(key) {
     activeTabKey = key;
 
@@ -54,30 +98,17 @@
     $$(".tab-body").forEach(sec => sec.toggleAttribute("hidden", !sec.classList.contains("active")));
 
     if (key !== "docs" && editorBox) {
-      const extraTabs = data?.extra_tabs || [];
-      const tab = extraTabs.find(x => x.id === key);
-
-      const isDrawingsTab =
-        key !== "desc" &&
-        tab &&
-        (tab.view === "drawings" || /чертеж/i.test((tab.title || "")));
-
-      if (isDrawingsTab) {
-        editorBox.innerHTML = "";
-        editorBox.removeAttribute("contenteditable");
-
+      if (getTabView(key) === "drawings") {
+        window.TinyEditor?.sync();
         const project = currentItem?.id || "";
-        const iframe = document.createElement("iframe");
-        iframe.src = `/drawings?project=${encodeURIComponent(project)}`;
-        iframe.style.width = "100%";
-        iframe.style.height = "600px";
-        iframe.loading = "lazy";
-        iframe.setAttribute("frameborder", "0");
-
-        editorBox.appendChild(iframe);
+        ensureDrawingsFrame(project);
+        showDrawingsPane();
         return;
       }
 
+      hideDrawingsPane();
+      const extraTabs = data?.extra_tabs || [];
+      const tab = extraTabs.find(x => x.id === key);
       let html = "";
       if (key === "desc") html = data?.text_html || "";
       else html = tab?.html || "";
@@ -95,6 +126,7 @@
     const btn = document.createElement("button");
     btn.className = "tab-btn";
     btn.dataset.key = key;
+    btn.dataset.view = getTabView(key);
     btn.innerHTML = `<span class="tab-title">${title || ""}</span>`;
 
     const act = document.createElement("span");
@@ -104,7 +136,7 @@
     bRename.type = "button";
     bRename.className = "tab-act tab-rename";
     bRename.title = "Переименовать";
-    bRename.textContent = "✎";
+    bRename.setAttribute("aria-label", "Переименовать");
     act.appendChild(bRename);
 
     if (!fixed) {
@@ -112,7 +144,7 @@
       bDel.type = "button";
       bDel.className = "tab-act tab-del";
       bDel.title = "Удалить";
-      bDel.textContent = "✖";
+      bDel.setAttribute("aria-label", "Удалить");
       act.appendChild(bDel);
 
       bDel.addEventListener("click", async (e) => {
@@ -231,20 +263,73 @@
     saveTimer = setTimeout(() => { fn().catch(() => {}); }, 400);
   }
 
-  async function addTab() {
+  function closeTabTypeMenu() {
+    document.querySelector(".tab-type-menu")?.remove();
+    document.removeEventListener("click", onOutsideTabTypeMenu);
+    document.removeEventListener("keydown", onTabTypeKeydown);
+  }
+
+  function onOutsideTabTypeMenu(e) {
+    const menu = document.querySelector(".tab-type-menu");
+    if (!menu) return;
+    if (menu.contains(e.target) || addBtn?.contains(e.target)) return;
+    closeTabTypeMenu();
+  }
+
+  function onTabTypeKeydown(e) {
+    if (e.key === "Escape") closeTabTypeMenu();
+  }
+
+  function openTabTypeMenu() {
+    closeTabTypeMenu();
+    if (!addBtn) return;
+
+    const menu = document.createElement("div");
+    menu.className = "tab-type-menu";
+    menu.innerHTML = `
+      <button type="button" class="tab-type-option" data-view="html">
+        <span class="tab-type-icon tab-type-icon-text" aria-hidden="true"></span>
+        <span class="tab-type-content">
+          <strong>Текстовая вкладка</strong>
+          <small>Для описаний, таблиц, изображений и заметок</small>
+        </span>
+      </button>
+      <button type="button" class="tab-type-option" data-view="drawings">
+        <span class="tab-type-icon tab-type-icon-drawings" aria-hidden="true"></span>
+        <span class="tab-type-content">
+          <strong>Галерея чертежей</strong>
+          <small>Отдельная страница с загрузкой и поиском чертежей</small>
+        </span>
+      </button>
+    `;
+
+    document.body.appendChild(menu);
+    const rect = addBtn.getBoundingClientRect();
+    const menuWidth = 320;
+    menu.style.left = `${Math.min(rect.left, window.innerWidth - menuWidth - 12)}px`;
+    menu.style.top = `${rect.bottom + 8}px`;
+
+    menu.querySelectorAll(".tab-type-option").forEach((option) => {
+      option.addEventListener("click", () => {
+        const view = option.dataset.view === "drawings" ? "drawings" : "html";
+        closeTabTypeMenu();
+        addTab(view);
+      });
+    });
+
+    setTimeout(() => {
+      document.addEventListener("click", onOutsideTabTypeMenu);
+      document.addEventListener("keydown", onTabTypeKeydown);
+    }, 0);
+  }
+
+  async function addTab(view = "html") {
     if (!isEdit()) return;
     const tabs = data.extra_tabs || [];
     if (tabs.length >= 10) {
       alert("Достигнут лимит 10 вкладок");
       return;
     }
-
-    // спрашиваем тип вкладки
-    const kind = prompt(
-      "Тип вкладки:\n1 — обычный текст\n2 — галерея чертежей",
-      "1"
-    );
-    const view = (kind === "2") ? "drawings" : "html";
 
     const title = view === "drawings" ? "Чертежи" : "Новая вкладка";
 
@@ -261,12 +346,19 @@
   }
 
 
-  addBtn?.addEventListener("click", (e) => { e.preventDefault(); addTab(); });
+  addBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!isEdit()) return;
+    openTabTypeMenu();
+  });
 
   $("#toggle-edit")?.addEventListener("change", () => {
     syncAddButtonVisibility();
     syncTabActionsVisibility();
     if (editorBox) editorBox.setAttribute("contenteditable", isEdit() ? "true" : "false");
+    if (getTabView(activeTabKey) === "drawings" && currentItem?.id) {
+      ensureDrawingsFrame(currentItem.id);
+    }
     window.TinyEditor?.sync();
   });
 

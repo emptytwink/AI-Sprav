@@ -522,7 +522,7 @@
 
   function markToolbar(isDirty) {
     const btn = document.getElementById("btn-save-menu");
-    if (btn) btn.textContent = isDirty ? "💾 Сохранить *" : "💾 Сохранить";
+    if (btn) btn.textContent = isDirty ? "Сохранить *" : "Сохранить";
   }
 
   function setDirty() {

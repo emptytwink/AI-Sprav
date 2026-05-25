@@ -280,3 +280,26 @@ def set_circle_files(drawing_id: str, circle_key: str, filenames: list[str]) -> 
             (circle_id, name),
         )
     conn.commit()
+
+
+def add_circle(
+    drawing_id: str,
+    circle_key: str,
+    *,
+    x: float,
+    y: float,
+    radius: float,
+) -> None:
+    """
+    Добавление одного нового круга в чертёж.
+    """
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        INSERT INTO circles (drawing_id, circle_key, x, y, radius)
+        VALUES (?, ?, ?, ?, ?)
+        """,
+        (drawing_id, circle_key, float(x), float(y), float(radius)),
+    )
+    conn.commit()

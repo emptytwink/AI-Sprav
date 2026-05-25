@@ -3,11 +3,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const project = params.get("project") || "";
+    const isEditMode = params.get("edit") === "1";
 
     const drawingsList = document.getElementById("drawingsList");
     const uploadForm = document.getElementById("uploadForm");
     const uploadInput = document.getElementById("uploadInput");
     const searchInput = document.getElementById("searchInput");
+
+    document.body.classList.toggle("view-mode", !isEditMode);
+    document.body.classList.toggle("edit-mode", isEditMode);
+
+    if (uploadForm) uploadForm.hidden = !isEditMode;
 
     let allDrawings = [];
 
@@ -15,6 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!drawingsList) return;
 
         drawingsList.innerHTML = "";
+
+        if (!drawings.length) {
+            const empty = document.createElement("div");
+            empty.className = "drawings-empty";
+            empty.textContent = searchInput?.value
+                ? "По этому запросу чертежи не найдены"
+                : "Чертежи пока не добавлены";
+            drawingsList.appendChild(empty);
+            return;
+        }
 
         drawings.forEach(drawing => {
             const item = document.createElement("div");
@@ -43,40 +59,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const nameEl = document.createElement("div");
             nameEl.className = "drawing-name";
             nameEl.textContent = drawing.display_name || drawing.drawing_name;
-            nameEl.contentEditable = true;
+            nameEl.contentEditable = isEditMode;
+            nameEl.classList.toggle("is-readonly", !isEditMode);
 
-            nameEl.addEventListener("blur", () => {
-                const newName = nameEl.textContent.trim();
-                if (newName && newName !== (drawing.display_name || drawing.drawing_name)) {
-                    updateDrawingName(drawing.drawing_id, newName);
-                } else {
-                    nameEl.textContent = drawing.display_name || drawing.drawing_name;
-                }
-            });
+            if (isEditMode) {
+                nameEl.addEventListener("blur", () => {
+                    const newName = nameEl.textContent.trim();
+                    if (newName && newName !== (drawing.display_name || drawing.drawing_name)) {
+                        updateDrawingName(drawing.drawing_id, newName);
+                    } else {
+                        nameEl.textContent = drawing.display_name || drawing.drawing_name;
+                    }
+                });
+            }
 
             const meta = document.createElement("div");
             meta.className = "drawing-meta";
             meta.textContent = `ID: ${drawing.drawing_id}`;
 
-            const actions = document.createElement("div");
-            actions.className = "drawing-actions";
-
-            const deleteBtn = document.createElement("button");
-            deleteBtn.type = "button";
-            deleteBtn.className = "drawing-delete-btn";
-            deleteBtn.textContent = "Удалить";
-
-            deleteBtn.addEventListener("click", () => {
-                if (confirm("Удалить этот чертёж?")) {
-                    deleteDrawing(drawing.drawing_id);
-                }
-            });
-
-            actions.appendChild(deleteBtn);
-
             info.appendChild(nameEl);
             info.appendChild(meta);
-            info.appendChild(actions);
+
+            if (isEditMode) {
+                const actions = document.createElement("div");
+                actions.className = "drawing-actions";
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.type = "button";
+                deleteBtn.className = "drawing-delete-btn";
+                deleteBtn.textContent = "Удалить";
+
+                deleteBtn.addEventListener("click", () => {
+                    if (confirm("Удалить этот чертёж?")) {
+                        deleteDrawing(drawing.drawing_id);
+                    }
+                });
+
+                actions.appendChild(deleteBtn);
+                info.appendChild(actions);
+            }
 
             item.appendChild(imgWrapper);
             item.appendChild(info);
@@ -112,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
             .then(r => r.json())
             .then(data => {
-                if (data.success) {
+                if (data.success || data.ok) {
                     allDrawings = allDrawings.filter(d => d.drawing_id !== drawingId);
                     const card = document.getElementById(`drawing-card-${drawingId}`);
                     if (card) card.remove();
@@ -166,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(err => console.error("Ошибка загрузки чертежа:", err));
     }
 
-    if (uploadForm && uploadInput) {
+    if (isEditMode && uploadForm && uploadInput) {
         uploadInput.addEventListener("change", () => {
             if (uploadInput.files && uploadInput.files[0]) {
                 handleUpload(uploadInput.files[0]);

@@ -249,6 +249,7 @@
   let docsSort       = "date-desc";
   let docsFilter     = "";
   let docsTypeFilter = "all"; // all | pdf | image | 3d | video | archive | other
+  let docsMode       = "recent"; // recent | all
 
   function getFileDateValue(f) {
     const raw =
@@ -440,6 +441,12 @@
     const q = (docsFilter || "").trim().toLowerCase();
 
     let result = all;
+
+    if (docsMode === "recent") {
+      result = [...result]
+        .sort((a, b) => getFileDateValue(b) - getFileDateValue(a))
+        .slice(0, 10);
+    }
 
     if (docsTypeFilter !== "all") {
       result = result.filter((f) => getFileType(f) === docsTypeFilter);
@@ -659,7 +666,7 @@
     const search = $("#docs-search-input");
     const sort   = $("#docs-sort-select");
     const type   = $("#docs-type-select");
-    const modeButtons = $$(".docs-mode-btn"); // если решишь оставить режимы
+    const modeButtons = $$(".docs-mode-btn");
 
     if (search && !search.dataset.bound) {
       search.dataset.bound = "1";
@@ -685,14 +692,12 @@
       });
     }
 
-    // не обязательно, но можно использовать для «быстрых режимов»
     if (modeButtons.length && !modeButtons[0].dataset.boundMode) {
       modeButtons.forEach(btn => {
         btn.dataset.boundMode = "1";
         btn.addEventListener("click", () => {
           const val = btn.dataset.mode || "all";
-          docsTypeFilter = val; // например: data-mode="archive" -> фильтр только архивы
-          if (type) type.value = val === "all" ? "all" : (val || "all");
+          docsMode = val === "recent" ? "recent" : "all";
           modeButtons.forEach(b => b.classList.toggle("active", b === btn));
           renderDocs();
         });
@@ -719,11 +724,22 @@
       console.error("Не удалось сохранить заголовок проекта (home):", e);
     }
 
-    const payload = {
-      id: model.id,
-      text_html: $("#desc-editable").innerHTML
-    };
-    await apiSaveContent(currentId, payload);
+    const active = document.querySelector(".tab-btn.active");
+    const key = active?.dataset.key || "desc";
+    const view = active?.dataset.view || key;
+
+    if (view !== "docs" && view !== "drawings") {
+      const html = window.TinyEditor?.getHtml?.() || $("#tab-editor")?.innerHTML || "";
+      if (key === "desc") {
+        await apiSaveContent(currentId, { id: model.id, text_html: html });
+      } else {
+        await fetch(`/api/content/${encodeURIComponent(currentId)}/tabs/${encodeURIComponent(key)}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ html })
+        });
+      }
+    }
 
     toast("Сохранено");
   }

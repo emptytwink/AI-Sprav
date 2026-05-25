@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import traceback
 
 from flask import request, jsonify, render_template
 from werkzeug.utils import secure_filename
@@ -74,7 +75,11 @@ def register_drawings_core_routes(app):
         fs_path = folder / f"{drawing_id}.png"
         file.save(str(fs_path))
 
-        data = detect_circles(str(fs_path), drawing_id, project)
+        try:
+            data = detect_circles(str(fs_path), drawing_id, project)
+        except Exception as exc:
+            traceback.print_exc()
+            return jsonify({"error": str(exc)}), 500
         return jsonify(data), 200
 
     @app.route("/delete_drawing/<drawing_id>", methods=["DELETE"])
